@@ -14,7 +14,18 @@
 <body>
     <!-- main -->
     <div class="main">
-        <div id="header"></div>
+        <div id="header">
+           <div class="menu">
+            <div class="container">
+                <div class="logo">
+                    <img class="logoImage" src="ASSET/IMAGES/logo.png" alt="logoBrand">
+                </div>
+                <div class="menu_container">
+
+                </div>
+            </div>
+           </div>
+        </div>
         <div id="app_container"></div>
         <div id="footer"></div>
     </div>

@@ -1,3 +1,8 @@
+<?php 
+include ("MVC/Model/category.php");
+include ("MVC/Model/logo.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +14,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- link css -->
     <link rel="stylesheet" href="./ASSET/CSS/main.css">
+    <link rel="stylesheet" href="./ASSET/CSS/reset.css">
 </head>
 
 <body>
@@ -17,11 +23,20 @@
         <div id="header">
            <div class="menu">
             <div class="container">
-                <div class="logo">
-                    <img class="logoImage" src="ASSET/IMAGES/logo.png" alt="logoBrand">
-                </div>
                 <div class="menu_container">
-
+                <div class="logo">
+                    <img class="logoImage" src="<?php get_logo($conn);?>" alt="logoBrand">
+                </div>
+                <div class="menu_category">
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a class="menu_item-link" href="">TRANG CHỦ</a>
+                        </li>
+                        <?php
+                            get_category($conn);
+                        ?>
+                    </ul>
+                </div>
                 </div>
             </div>
            </div>

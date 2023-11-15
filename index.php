@@ -45,7 +45,7 @@ include ("MVC/Model/logo.php");
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <div class="menu_login_content">
-                            
+                            <p>TÀI KHOẢN</p>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@
 
 .menu_container{
     display: flex;
+    height: 80px;
     
 }
 .logo{
@@ -22,12 +23,15 @@
 
 .menu_category{
     width: 80%;
+    height: 80px;
+    line-height: 80px;
 }
 
 .menu_list{
     list-style: none;
     display: flex;
-    line-height: 80px
+    margin: 0;
+    line-height: 80px;
 }
 
 .menu_item{
@@ -50,11 +54,27 @@
     width: 10%;
     display: flex;
     line-height: 80px;
+    cursor: pointer;
+    justify-content: space-between;
+   
 }
 
 .menu_login_user{
     line-height: 80px;
+    width: 15%;
 }
 .menu_login_user i{
     font-size: 24px;
+    color: white;
+}
+.menu_login_content{
+    width: 80%;
+    text-align: center;
+    font-size: 15px ;
+    color: white;
+    font-weight: 600;
+    line-height: 80px;
+}
+.menu_login_content p{
+    margin: 0;
 }

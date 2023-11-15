@@ -1,5 +1,5 @@
 <?php 
-include("./MVC/Model/connect.php");
+include("MVC/Model/connect.php");
 function get_category ($conn){
     $sql = "select * from category";
     $result = $conn -> prepare($sql);

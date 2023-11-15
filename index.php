@@ -15,32 +15,50 @@ include ("MVC/Model/logo.php");
     <!-- link css -->
     <link rel="stylesheet" href="./ASSET/CSS/main.css">
     <link rel="stylesheet" href="./ASSET/CSS/reset.css">
+    <link rel="stylesheet" href="./Font/css/all.css">
 </head>
 
 <body>
     <!-- main -->
     <div class="main">
+        <!-- begin header -->
         <div id="header">
+            <!-- begin menu -->
            <div class="menu">
-            <div class="container">
+             <div class="container">
                 <div class="menu_container">
-                <div class="logo">
-                    <img class="logoImage" src="<?php get_logo($conn);?>" alt="logoBrand">
+                    <div class="logo">
+                        <img class="logoImage" src="<?php get_logo($conn);?>" alt="logoBrand">
+                    </div>
+                    <div class="menu_category">
+                        <ul class="menu_list">
+                            <li class="menu_item">
+                                <a class="menu_item-link" href="">TRANG CHỦ</a>
+                            </li>
+                            <?php
+                                get_category($conn);
+                            ?>
+                        </ul>
+                    </div>
+                    <div class="menu_login">
+                        <div class="menu_login_user">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="menu_login_content">
+                            
+                        </div>
+                    </div>
                 </div>
-                <div class="menu_category">
-                    <ul class="menu_list">
-                        <li class="menu_item">
-                            <a class="menu_item-link" href="">TRANG CHỦ</a>
-                        </li>
-                        <?php
-                            get_category($conn);
-                        ?>
-                    </ul>
+             </div>
+           </div>
+           <!-- end menu -->
+           <div class="nav_bar">
+                <div class="container">
+                    
                 </div>
-                </div>
-            </div>
            </div>
         </div>
+        <!-- end header -->
         <div id="app_container"></div>
         <div id="footer"></div>
     </div>

@@ -7,7 +7,7 @@
 
 .menu_container{
     display: flex;
-    justify-content: space-between;
+    
 }
 .logo{
     line-height: 80px;
@@ -21,7 +21,7 @@
 }
 
 .menu_category{
-    width: 89%;
+    width: 80%;
 }
 
 .menu_list{
@@ -38,6 +38,23 @@
 }
 .menu_item-link {
     color: white;
+    text-decoration: none;    
+}
+
+.menu_item:hover .menu_item-link{
+    color: black;
     text-decoration: none;
-    
+}
+/* menu login css */
+.menu_login {
+    width: 10%;
+    display: flex;
+    line-height: 80px;
+}
+
+.menu_login_user{
+    line-height: 80px;
+}
+.menu_login_user i{
+    font-size: 24px;
 }

@@ -1,0 +1,113 @@
+/* header css */
+#header {
+    height: 150px;
+    background-color: rgba(146, 170, 184, 0.524);
+}
+
+.slogan {
+    display: flex;
+}
+
+.logo {
+    width: 20%;
+    line-height: 150px;
+}
+
+.logo_img {
+    width: 65%;
+    height: 100px;
+}
+
+.name_shop {
+    width: 80%;
+    text-align: center;
+    line-height: 150px;
+}
+
+.lbl_name_shop {
+    color: black;
+    font-size: 80px;
+}
+
+/* content css */
+
+#content {
+    margin-top: 50px;
+}
+
+
+/* fucntion css */
+.function {
+    height: auto;
+    
+}
+
+.function_list {
+    list-style: none;
+    margin: 0;
+    width: 100%;
+    padding: 5px;
+    border-radius: 2px;
+    border: 2px solid blue;
+}
+
+.fucntion_item {
+    border-radius: 1px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.fucntion_btn {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 2px;
+    border:  none;
+    margin-block-end: 5px ;   
+}
+.fucntion_btn:focus,
+.fucntion_btn:active {
+    outline: none; /* Ngăn chặn hiển thị đường viền khi button được focus hoặc active */
+}
+.fucntion_btn:hover{
+    background-color: rgb(215, 217, 250);
+}
+
+.btn_plus {
+    width: 10%;
+    font-size: 15px;
+    cursor: pointer;
+}
+.btn_minus{
+    width: 10%;
+    font-size: 15px;
+    cursor: pointer;
+}
+.btn_icon_hide{
+    display: none !important;
+}
+
+#btn_category Label {
+    width: 90%;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sub_function_list{
+    list-style: none;
+    margin-left: 20px;
+}
+.sub_function_item{
+
+}
+.sub_item_link{
+    color: black;
+}
+.sub_item_link:hover{
+    text-decoration: none;
+    
+}

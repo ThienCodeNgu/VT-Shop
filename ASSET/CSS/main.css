@@ -78,3 +78,9 @@
 .menu_login_content p{
     margin: 0;
 }
+.menu_login:hover .menu_login_user i  {
+    color: black;
+}
+.menu_login:hover .menu_login_content  {
+    color: black;
+}

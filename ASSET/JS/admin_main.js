@@ -1,17 +1,32 @@
+// variable button
 var cate_btn = document.getElementById("btn_category");
-var btn_plus = document.querySelector(".btn_plus");
-var btn_minus = document.querySelector(".btn_minus");
-var sub_function = document.querySelector(".sub_function_list");
-var clickCount = 0;
-cate_btn.addEventListener("click", function(){
-    clickCount++;
-    if (clickCount % 2 == 0){
-        btn_plus.classList.remove('btn_icon_hide');
-        btn_minus.classList.add('btn_icon_hide');
-        sub_function.classList.add('btn_icon_hide');    
-    }else {
-        btn_plus.classList.add('btn_icon_hide');
-        btn_minus.classList.remove('btn_icon_hide');
-        sub_function.classList.remove('btn_icon_hide');
-    }
+var logo_btn = document.getElementById("btn_logo");
+var btn_banner = document.getElementById("btn_banner");
+var btn_product = document.getElementById("btn_product");
+
+// buttons event handling
+
+var clickCount_cateBtn = 0;
+// category button
+cate_btn.addEventListener("click", function () {
+    clickCount_cateBtn++;
+    window.location.href = "../Admin/MVC/view/category.php";
+});
+var clickCount_logoBtn = 0;
+// logo button
+logo_btn.addEventListener("click", function () {
+    clickCount_logoBtn++;
+    window.location.href = "../Admin/MVC/view/category.php";
+});
+var clickCount_bannerBtn = 0;
+// banner button
+btn_banner.addEventListener("click", function () {
+    clickCount_bannerBtn++;
+    window.location.href = "../Admin/MVC/view/category.php";
+});
+var clickCount_productBtn = 0;
+// product button
+btn_product.addEventListener("click", function () {
+    clickCount_bannerBtn++;
+    window.location.href = "../Admin/MVC/view/category.php";
 });

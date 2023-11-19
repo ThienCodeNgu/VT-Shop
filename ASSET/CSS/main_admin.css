@@ -97,17 +97,16 @@
     cursor: pointer;
 }
 
-.sub_function_list{
+.sub_list{
     list-style: none;
     margin-left: 20px;
 }
-.sub_function_item{
+.sub_item{
 
 }
 .sub_item_link{
     color: black;
 }
 .sub_item_link:hover{
-    text-decoration: none;
-    
+    text-decoration: none;   
 }

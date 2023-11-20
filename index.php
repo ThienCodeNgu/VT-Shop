@@ -1,6 +1,6 @@
 <?php 
-include ("MVC/Model/category.php");
-include ("MVC/Model/logo.php");
+include ("./MVC/Model/category.php");
+include ("./MVC/Model/logo.php");
 
 ?>
 <!DOCTYPE html>

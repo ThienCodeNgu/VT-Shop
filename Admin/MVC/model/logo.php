@@ -1,5 +1,5 @@
 <?php
-include("./MVC/Model/connect.php");
+include("connect.php");
 function get_logo ($conn){
     $sql = "select * from logo where idLogo = 1";
     $result = $conn-> prepare( $sql );

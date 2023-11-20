@@ -1,5 +1,5 @@
 <?php
-require('../MVC/Model/logo.php')
+require('../Admin/MVC/model/logo.php')
 ?>
 
 <!DOCTYPE html>

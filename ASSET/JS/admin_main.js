@@ -4,6 +4,7 @@ var logo_btn = document.getElementById("btn_logo");
 var btn_banner = document.getElementById("btn_banner");
 var btn_product = document.getElementById("btn_product");
 
+
 // buttons event handling
 
 var clickCount_cateBtn = 0;
@@ -30,3 +31,4 @@ btn_product.addEventListener("click", function () {
     clickCount_bannerBtn++;
     window.location.href = "../Admin/MVC/view/category.php";
 });
+

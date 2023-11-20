@@ -1,4 +1,7 @@
 <?php
+require('../model/category_list.php');
+require('../model/logo.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +16,7 @@
     <!-- link css -->
     <link rel="stylesheet" href="../../../ASSET/CSS/reset.css">
     <link rel="stylesheet" href="../../../ASSET/CSS/main_admin.css">
+    <link rel="stylesheet" href="../../../ASSET/CSS/category_view.css">
     <!-- link fontawsome -->
     <link rel="stylesheet" href="../../../Font/css/all.min.css">
 
@@ -24,7 +28,7 @@
             <div class="container">
                 <div class="slogan">
                     <div class="logo">
-                        <img src="../../../ASSET/IMAGES/logo.png" alt="logo brand" class="logo_img">
+                        <img src="../../../<?php get_logo($conn); ?>" alt="logo brand" class="logo_img">
                     </div>
                     <div class="name_shop">
                         <Label class="lbl_name_shop">VT-SHOP</Label>
@@ -68,7 +72,24 @@
                         </ul>
                     </div>
                     <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 view_content">
-                            <form action="post" method=""></form>
+                        <div class="exit_button">
+                            <i class="fa-regular fa-circle-xmark exit_icon"></i>
+                        </div>
+                        <h1 class="category_title">DANH MỤC</h1>
+                            <table border="2" class="category_table">                              
+                                <thead>
+                                    <tr>
+                                        <th>ID Danh Mục</th>
+                                        <th>Tên Danh Mục</th>  
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php display_category_list($conn); ?>
+                                </tbody>
+                            </table>
+                        <form action="./add_cate_view.php" method="post">
+                            <input class="add_cate_btn" type="submit" value="THÊM">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -85,7 +106,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- link js -->
-    <script src="../ASSET/JS/admin_main.js"></script>
+    <script src="../../../ASSET/JS/admin_main.js"></script>
+    <script src="../../../ASSET/JS/turnback.js"></script>
 </body>
 
 </html>

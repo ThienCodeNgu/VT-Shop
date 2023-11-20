@@ -1,3 +1,7 @@
+<?php
+require('../MVC/Model/logo.php')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +26,7 @@
             <div class="container">
                 <div class="slogan">
                     <div class="logo">
-                        <img src="../ASSET/IMAGES/logo.png" alt="logo brand" class="logo_img">
+                        <img src="../<?php echo get_logo($conn); ?>" alt="logo brand" class="logo_img">
                     </div>
                     <div class="name_shop">
                         <Label class="lbl_name_shop">VT-SHOP</Label>

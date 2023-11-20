@@ -10,7 +10,7 @@ var clickCount_cateBtn = 0;
 // category button
 cate_btn.addEventListener("click", function () {
     clickCount_cateBtn++;
-    window.location.href = "../Admin/MVC/view/category.php";
+    window.location.href = "../Admin/MVC/view/category_view.php";
 });
 var clickCount_logoBtn = 0;
 // logo button

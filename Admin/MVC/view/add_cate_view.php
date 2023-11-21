@@ -21,7 +21,6 @@ require('../model/logo.php');
     <link rel="stylesheet" href="../../../Font/css/all.min.css">
 
 </head>
-
 <body>
     <div class="main">
         <div id="header">
@@ -47,17 +46,23 @@ require('../model/logo.php');
                         <div class="exit_button">
                             <i class="fa-regular fa-circle-xmark exit_icon"></i>
                         </div>
-                        
+
                         <h2 class="add_cate_title">THÊM DANH MỤC</h2>
 
                         <form action="../model/add_category.php" method="post">
-                            <table border="2" class="table_add_cate">
+                            <table  class="table_add_cate">
                                 <tr>
                                     <td>
                                         Tên danh mục
                                     </td>
                                     <td>
                                         <input type="text" name="cateName" id="cateName" placeholder="Nhập tên danh mục">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    
+                                    <td colspan="2">
+                                         <input type="submit" name="cate_submit" id="cate_submit" value="Thêm">
                                     </td>
                                 </tr>
                             </table>
@@ -80,7 +85,12 @@ require('../model/logo.php');
         crossorigin="anonymous"></script>
     <!-- link js -->
     <script src="../../../ASSET/JS/admin_main.js"></script>
-    <script src="../../../ASSET/JS/turnback.js"></script>
+    <script>
+        var btn_exit = document.querySelector('.exit_icon');
+        btn_exit.addEventListener("click", function(){
+            window.location.href = "./category_view.php";
+        });
+    </script>
 </body>
 
 </html>

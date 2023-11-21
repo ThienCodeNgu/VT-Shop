@@ -1,4 +1,5 @@
 <?php
+include('./connect.php');
 $CateName = $_POST['cateName'];
 if (isset($CateName)){
     
@@ -14,6 +15,5 @@ if (isset($CateName)){
                 alert ("Thêm danh mục thành công!");
                 window.location.href = "../view/category_view.php";
               </script>';
-
 }
 ?>

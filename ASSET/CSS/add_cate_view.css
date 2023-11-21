@@ -16,3 +16,14 @@
     text-align: center;
 }
 /* css for table add category */
+
+.table_add_cate {
+    width: 100%;
+}
+#cateName {
+    width: 100%;
+}
+#cate_submit{
+    margin-top: 15px;
+    float: right;
+}

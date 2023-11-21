@@ -1,6 +1,6 @@
 <?php
 require('../model/category_list.php');
-require('../model/logo.php');
+
 
 if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
     $id_cate = $_POST['cate_id'];
@@ -28,24 +28,13 @@ if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
 </head>
 <body>
     <div class="main">
-        <div id="header">
-            <div class="container">
-                <div class="slogan">
-                    <div class="logo">
-                        <img src="../../../<?php get_logo($conn); ?>" alt="logo brand" class="logo_img">
-                    </div>
-                    <div class="name_shop">
-                        <Label class="lbl_name_shop">VT-SHOP</Label>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <?php require_once('./header.php') ?>
 
         <div id="content">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2 col-sm-3 col-md-3= col-lg-3 function">
-                        <?php require('./function_list.php') ?>
+                        <?php require_once('./function_list.php') ?>
                     </div>
                     <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 view_content">
                         <div class="exit_button">

@@ -10,4 +10,12 @@ function get_logo ($conn){
         echo $row["linkLogo"];
     }
 }
+function logo ($conn){
+    $sql = "select * from logo where idLogo = 1";
+    $result = $conn-> prepare( $sql );
+    $result->execute();
+
+    $rows = $result->fetch();
+        return $rows["linkLogo"];   
+}
 ?>

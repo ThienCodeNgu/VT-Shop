@@ -1,6 +1,6 @@
 <?php
 require('../model/category_list.php');
-require('../model/logo.php');
+
 
 ?>
 <!DOCTYPE html>
@@ -23,18 +23,8 @@ require('../model/logo.php');
 </head>
 <body>
     <div class="main">
-        <div id="header">
-            <div class="container">
-                <div class="slogan">
-                    <div class="logo">
-                        <img src="../../../<?php get_logo($conn); ?>" alt="logo brand" class="logo_img">
-                    </div>
-                    <div class="name_shop">
-                        <Label class="lbl_name_shop">VT-SHOP</Label>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <?php require_once('./header.php') ?>
+
 
         <div id="content">
             <div class="container">

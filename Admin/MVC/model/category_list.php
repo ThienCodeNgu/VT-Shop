@@ -17,9 +17,8 @@ function display_category_list ($conn){
                 <input type="hidden" name="cate_name" value="'.$category['CateName'].'">
                 <td style ="padding: 2px 5px"><input class="submit_btn" type="submit"  value="Sửa"></td>
             </form>
-            <form action="./delete_cate_view.php" method="post">
+            <form action="../model/delete_category.php" method="post">
                 <input type="hidden" name="cate_id" value="'.$category['CateID'].'">
-                <input type="hidden" name="cate_name" value="'.$category['CateName'].'">
                 <td style ="padding: 2px 5px"><input class="submit_btn" type="submit"  value="Xóa"></td>
             </form>
            

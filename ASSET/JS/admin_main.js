@@ -17,7 +17,7 @@ var clickCount_logoBtn = 0;
 // logo button
 logo_btn.addEventListener("click", function () {
     clickCount_logoBtn++;
-    window.location.href = "../Admin/MVC/view/category.php";
+    window.location.href = "../Admin/MVC/view/logo_view.php";
 });
 var clickCount_bannerBtn = 0;
 // banner button

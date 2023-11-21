@@ -2,6 +2,11 @@
 require('../model/category_list.php');
 require('../model/logo.php');
 
+if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
+    $id_cate = $_POST['cate_id'];
+    $name_cate = $_POST['cate_name'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +21,11 @@ require('../model/logo.php');
     <!-- link css -->
     <link rel="stylesheet" href="../../../ASSET/CSS/reset.css">
     <link rel="stylesheet" href="../../../ASSET/CSS/main_admin.css">
-    <link rel="stylesheet" href="../../../ASSET/CSS/category_view.css">
+    <link rel="stylesheet" href="../../../ASSET/CSS/edit_cate_view.css">
     <!-- link fontawsome -->
     <link rel="stylesheet" href="../../../Font/css/all.min.css">
 
 </head>
-
 <body>
     <div class="main">
         <div id="header">
@@ -47,21 +51,37 @@ require('../model/logo.php');
                         <div class="exit_button">
                             <i class="fa-regular fa-circle-xmark exit_icon"></i>
                         </div>
-                        <h1 class="category_title">DANH MỤC</h1>
-                            <table border="2" class="category_table">                              
-                                <thead>
-                                    <tr>
-                                        <th>ID Danh Mục</th>
-                                        <th>Tên Danh Mục</th>  
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php display_category_list($conn); ?>
-                                </tbody>
+
+                        <h2 class="edit_cate_title">THÊM DANH MỤC</h2>
+
+                        <form action="../model/edit_category.php" method="post">
+                            <table  class="table_edit_cate">
+                                <tr>
+                                    <td>
+                                        Tên danh mục cũ
+                                    </td>
+                                    <td>
+                                        <input type="text" name="oldName" id="oldName" value="<?php echo $name_cate; ?>" disabled>
+                                        <input type="hidden" name="id_cate" id="id_cate" value="<?php echo $id_cate; ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tên danh mục mới
+                                    </td>
+                                    <td>
+                                    <input type="text" name="newName" id="newName" placeholder="Nhập tên danh mục mới" >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    
+                                    <td colspan="2">
+                                         <input type="submit" name="cate_submit" id="cate_submit" value="Sửa">
+                                    </td>
+                                </tr>
                             </table>
-                        <form action="./add_cate_view.php" method="post">
-                            <input class="add_cate_btn" type="submit" value="THÊM">
                         </form>
+                        
                     </div>
                 </div>
             </div>
@@ -79,8 +99,12 @@ require('../model/logo.php');
         crossorigin="anonymous"></script>
     <!-- link js -->
     <script src="../../../ASSET/JS/admin_main.js"></script>
-    <script src="../../../ASSET/JS/turnback.js"></script>
-    
+    <script>
+        var btn_exit = document.querySelector('.exit_icon');
+        btn_exit.addEventListener("click", function(){
+            window.location.href = "./category_view.php";
+        });
+    </script>
 </body>
 
 </html>

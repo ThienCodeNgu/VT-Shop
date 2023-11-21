@@ -12,8 +12,17 @@ function display_category_list ($conn){
         <tr>
             <td>'.$category['CateID'].'</td>
             <td>'.$category['CateName'].'</td>
-            <td><a class="edit_link table_link" href="">Sửa</a></td>
-            <td><a class="delete_link table_link" href="">Xóa</a></td>
+            <form action="./edit_cate_view.php" method="post">
+                <input type="hidden" name="cate_id" value="'.$category['CateID'].'">
+                <input type="hidden" name="cate_name" value="'.$category['CateName'].'">
+                <td style ="padding: 2px 5px"><input class="submit_btn" type="submit"  value="Sửa"></td>
+            </form>
+            <form action="./delete_cate_view.php" method="post">
+                <input type="hidden" name="cate_id" value="'.$category['CateID'].'">
+                <input type="hidden" name="cate_name" value="'.$category['CateName'].'">
+                <td style ="padding: 2px 5px"><input class="submit_btn" type="submit"  value="Xóa"></td>
+            </form>
+           
         </tr>
              '
         ;

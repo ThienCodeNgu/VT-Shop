@@ -1,4 +1,3 @@
-
 /* css for exit button */
 .exit_button{
     margin-bottom: 20px;
@@ -12,17 +11,20 @@
     color: red;
 }
 
-.add_cate_title{
+.edit_cate_title{
     text-align: center;
 }
-/* css for table add category */
 
-.table_add_cate {
+.table_edit_cate {
     width: 100%;
 }
-#cateName {
+
+#oldName,#newName{
     width: 100%;
+    padding: 5px;
+    margin: 10px;
 }
+
 #cate_submit{
     margin-top: 15px;
     float: right;

@@ -90,6 +90,7 @@ require('../model/logo.php');
         btn_exit.addEventListener("click", function(){
             window.location.href = "./category_view.php";
         });
+        
     </script>
 </body>
 

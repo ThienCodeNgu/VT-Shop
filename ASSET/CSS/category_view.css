@@ -12,13 +12,10 @@
     margin-bottom: 20px;
 }
 
-.table_link{
-    color: black;
+.submit_btn{
+    width: 80%;
 }
-.table_link:hover{
-    text-decoration: none;
-    color: rgb(237, 84, 32);
-}
+
 
 .add_cate_btn{
     float: right;

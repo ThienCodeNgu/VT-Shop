@@ -15,7 +15,8 @@ function display_category_list ($conn){
             <td><a class="edit_link table_link" href="">Sửa</a></td>
             <td><a class="delete_link table_link" href="">Xóa</a></td>
         </tr>
-             ';
+             '
+        ;
     }
 } 
 ?>

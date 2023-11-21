@@ -39,36 +39,7 @@ require('../Admin/MVC/model/logo.php')
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2 col-sm-3 col-md-3= col-lg-3 function">
-                        <ul class="function_list">
-                            <li class="function_item">
-                                <button id="btn_category" class="fucntion_btn" >
-                                    <i class="fa-solid fa-plus btn_plus"></i>
-                                    <i class="fa-solid fa-minus btn_minus btn_icon_hide"></i>
-                                    <Label>DANH MỤC</Label>
-                                </button>
-                            </li>
-                            <li class="function_item">
-                                <button id="btn_logo" class="fucntion_btn" >
-                                    <i id="plus_logo" class="fa-solid fa-plus btn_plus"></i>
-                                    <i id="minus_logo" class="fa-solid fa-minus btn_minus btn_icon_hide"></i>
-                                    <Label>LOGO</Label>
-                                </button>
-                            </li>
-                            <li class="function_item">
-                                <button id="btn_banner" class="fucntion_btn" >
-                                    <i id="plus_banner" class="fa-solid fa-plus btn_plus"></i>
-                                    <i id="minus_banner" class="fa-solid fa-minus btn_minus btn_icon_hide"></i>
-                                    <Label>BANNER</Label>
-                                </button>
-                            </li>
-                            <li class="function_item">
-                                <button id="btn_product" class="fucntion_btn" >
-                                    <i id="plus_product" class="fa-solid fa-plus btn_plus"></i>
-                                    <i id="minus_product" class="fa-solid fa-minus btn_minus btn_icon_hide"></i>
-                                    <Label>SẢN PHẨM</Label>
-                                </button>
-                            </li>                          
-                        </ul>
+                        <?php require('../Admin/MVC/view/function_list.php') ?>
                     </div>
                     <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 view_content">
 

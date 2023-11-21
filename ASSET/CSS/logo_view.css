@@ -1,0 +1,35 @@
+.logo_title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* css for exit button */
+.exit_button{
+    margin-bottom: 20px;
+}
+.exit_icon {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+.exit_icon:hover{
+    color: red;
+}
+
+/*  */
+.lbl_chooseImage{
+    width: 20%;
+}
+.choose_file{
+    width: 50%;
+}
+.btn_file{
+    float: right;
+    width: 20%;
+    outline: none;
+    border: none;
+    background-color: rgb(91, 239, 54);
+    color: white;
+}
+.btn_file:hover{
+    background-color: rgb(26, 107, 6);
+}

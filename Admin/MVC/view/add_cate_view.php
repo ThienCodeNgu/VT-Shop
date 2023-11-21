@@ -74,7 +74,7 @@ require('../model/category_list.php');
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- link js -->
-    <script src="../../../ASSET/JS/admin_main.js"></script>
+    <?php include('../control/functionChange.php') ?>
     <script>
         var btn_exit = document.querySelector('.exit_icon');
         btn_exit.addEventListener("click", function(){

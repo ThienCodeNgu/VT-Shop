@@ -1,5 +1,5 @@
 <?php
-require('../model/category_list.php');
+
 
 
 ?>
@@ -16,7 +16,7 @@ require('../model/category_list.php');
     <!-- link css -->
     <link rel="stylesheet" href="../../../ASSET/CSS/reset.css">
     <link rel="stylesheet" href="../../../ASSET/CSS/main_admin.css">
-    <link rel="stylesheet" href="../../../ASSET/CSS/category_view.css">
+    <link rel="stylesheet" href="../../../ASSET/CSS/logo_view.css">
     <!-- link fontawsome -->
     <link rel="stylesheet" href="../../../Font/css/all.min.css">
 
@@ -36,21 +36,12 @@ require('../model/category_list.php');
                         <div class="exit_button">
                             <i class="fa-regular fa-circle-xmark exit_icon"></i>
                         </div>
-                        <h1 class="category_title">DANH MỤC</h1>
-                            <table border="2" class="category_table">                              
-                                <thead>
-                                    <tr>
-                                        <th>ID Danh Mục</th>
-                                        <th>Tên Danh Mục</th>  
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php display_category_list($conn); ?>
-                                </tbody>
-                            </table>
-                        <form action="./add_cate_view.php" method="post">
-                            <input class="add_cate_btn" type="submit" value="THÊM">
-                        </form>
+                        <h2 class="logo_title">ĐỔI LOGO</h2>
+                        <form action="../model/upload_logo.php" method="post" enctype="multipart/form-data">
+                            <label class="lbl_chooseImage" for="file">Chọn Hình Ảnh:</label>
+                            <input class="choose_file" type="file" name="file" id="file" accept="image/*">
+                            <button class="btn_file" type="submit" name="submit">ĐỔI</button>
+                        </form>   
                     </div>
                 </div>
             </div>

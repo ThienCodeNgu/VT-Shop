@@ -1,0 +1,15 @@
+.pro_type_title{
+    text-align: center;
+}
+/* css for exit button */
+.exit_button{
+    margin-bottom: 20px;
+}
+.exit_icon {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+.exit_icon:hover{
+    color: red;
+}

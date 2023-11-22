@@ -1,9 +1,5 @@
 <?php
-require('../model/category_list.php');
-if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
-    $id_cate = $_POST['cate_id'];
-    $name_cate = $_POST['cate_name'];
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +14,12 @@ if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
     <!-- link css -->
     <link rel="stylesheet" href="../../../ASSET/CSS/reset.css">
     <link rel="stylesheet" href="../../../ASSET/CSS/main_admin.css">
-    <link rel="stylesheet" href="../../../ASSET/CSS/edit_cate_view.css">
+    <link rel="stylesheet" href="../../../ASSET/CSS/pro_type_view.css">
     <!-- link fontawsome -->
     <link rel="stylesheet" href="../../../Font/css/all.min.css">
 
 </head>
+
 <body>
     <div class="main">
     <?php require_once('./header.php') ?>
@@ -31,42 +28,13 @@ if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2 col-sm-3 col-md-3= col-lg-3 function">
-                        <?php require_once('./function_list.php') ?>
+                        <?php require('./function_list.php') ?>
                     </div>
                     <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 view_content">
                         <div class="exit_button">
                             <i class="fa-regular fa-circle-xmark exit_icon"></i>
                         </div>
-
-                        <h2 class="edit_cate_title">THÊM DANH MỤC</h2>
-
-                        <form action="../model/edit_category.php" method="post">
-                            <table  class="table_edit_cate">
-                                <tr>
-                                    <td>
-                                        Tên danh mục cũ
-                                    </td>
-                                    <td>
-                                        <input type="text" name="oldName" id="oldName" value="<?php echo $name_cate; ?>" disabled>
-                                        <input type="hidden" name="id_cate" id="id_cate" value="<?php echo $id_cate; ?>">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Tên danh mục mới
-                                    </td>
-                                    <td>
-                                    <input type="text" name="newName" id="newName" placeholder="Nhập tên danh mục mới" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    
-                                    <td colspan="2">
-                                         <input type="submit" name="cate_submit" id="cate_submit" value="Sửa">
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                        <h1 class="pro_type_title">LOẠI SẢN PHẨM</h1>
                         
                     </div>
                 </div>
@@ -85,12 +53,8 @@ if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
         crossorigin="anonymous"></script>
     <!-- link js -->
     <?php include('../control/functionChange.php') ?>
-    <script>
-        var btn_exit = document.querySelector('.exit_icon');
-        btn_exit.addEventListener("click", function(){
-            window.location.href = "./category_view.php";
-        });
-    </script>
+    <script src="../../../ASSET/JS/turnback.js"></script>
+    
 </body>
 
 </html>

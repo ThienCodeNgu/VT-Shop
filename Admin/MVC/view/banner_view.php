@@ -1,5 +1,4 @@
 <?php
-require('../model/category_list.php');
 require('../model/connect.php');
 
 function display_list_banner ($conn) {

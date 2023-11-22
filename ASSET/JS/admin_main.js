@@ -23,7 +23,7 @@ var clickCount_bannerBtn = 0;
 // banner button
 btn_banner.addEventListener("click", function () {
     clickCount_bannerBtn++;
-    window.location.href = "../Admin/MVC/view/category.php";
+    window.location.href = "../Admin/MVC/view/banner_view.php";
 });
 var clickCount_productBtn = 0;
 // product button

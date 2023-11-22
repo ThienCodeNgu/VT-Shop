@@ -1,5 +1,7 @@
-<?php 
-if (isset($_POST['submit'])) {
+<?php
+include ('../model/connect.php');
+$name_banner = $_POST['name_banner'];
+if (isset($_POST['submit']) && isset($name_banner)) {
     $targetDirectory = "../../../ASSET/IMAGES/";
     $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
 
@@ -15,24 +17,15 @@ if (isset($_POST['submit'])) {
             $arr = explode("../../../", $targetFile);          
             $arr2 = explode( '\\', $arr[1] );        
             $linkNewLogo = $arr2[0].$arr2[1];// link logo chính xác 
-            // tiếp theo ta truy vấn database và đổi link logo
             
-            include ('../model/connect.php');
-            //đầu tiên truy vấn csdl để lấy link logo cũ
-            $query = "select * from logo where idLogo = 1";
-            $result = $conn-> prepare( $query );
-            $result->execute();
-            $rows = $result->fetch();
-            //đổi link logo
-            $sql = "UPDATE logo set linkLogo = '$linkNewLogo' WHERE idLogo = '1'";
-            $statement = $conn -> prepare($sql);
+            //truy vấn csdl và lưu tên và link banner muốn thêm vào csdl
+            $query = "insert into banner values ('null', '$name_banner', '$linkNewLogo');";
+            $statement = $conn -> prepare($query);
             $statement->execute();
             $statement->closeCursor();
-            // Xóa ảnh logo cũ trong folder image
-            unlink('../../../'.$rows['linkLogo']);
             echo '<script>
-                alert ("ĐỔI LOGO SHOP THÀNH CÔNG");
-                window.location.href = "../view/logo_view.php";
+                alert ("THÊM THÀNH CÔNG");
+                window.location.href = "../view/banner_view.php";
                   </script>'
             ;    
         } else {
@@ -41,5 +34,11 @@ if (isset($_POST['submit'])) {
     } else {
         echo "Chỉ chấp nhận các định dạng hình ảnh: JPG, JPEG, PNG, GIF.";
     }
+}else {
+    echo '<script>
+                alert ("Vui lòng điền đủ thông tin!");
+                window.location.href = "../view/banner_view.php";
+          </script>'
+            ;  
 }
-?>
+?> 

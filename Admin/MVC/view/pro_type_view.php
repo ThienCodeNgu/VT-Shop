@@ -1,5 +1,49 @@
 <?php
+include('../model/connect.php');
+  function getNameCate ($id,$conn){
+    $sql = "select * from category where CateID = '$id'";
+    $statement = $conn ->prepare($sql);
+    $statement -> execute();
+    $result = $statement -> fetchAll();
+    foreach ($result as $rs){
+        $nameCate = $rs['CateName'];     
+    }
+    return $nameCate;
+    
+  }
+  function display_pro_type ($conn){
+    $sql = "SELECT * FROM producttype";
+    $statement = $conn ->prepare($sql);
+    $statement -> execute();
 
+    $types = $statement -> fetchAll();
+    foreach ($types as $type){
+        $id = $type['CateID'];
+        echo '
+        <tr>
+        <td>'.$type['NameProductType'].'</td>
+        <td>
+            <div class="img_pro_type">
+                <img src="../../../'.$type['ImageProductType'].'" alt="images pro_type" class="images_proType">
+            </div>
+        </td>
+        <td>'.getNameCate($id, $conn).'</td>
+        <td>
+            <form action="./edit_type.php" method="post">
+                <input type="hidden" name="id_type" value="'.$type['IdProductType'].'">
+                <input type="submit" class="submit_btn" value="SỬA">
+            </form>
+        </td>
+        <td>
+            <form action="../model/delete_type.php" method="post">
+                <input type="hidden" name="id_type" value="'.$type['IdProductType'].'">
+                <input type="submit" class="submit_btn" value="XÓA">
+            </form>
+        </td>
+        </tr>
+             ';
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +78,15 @@
                         <div class="exit_button">
                             <i class="fa-regular fa-circle-xmark exit_icon"></i>
                         </div>
-                        <h1 class="pro_type_title">LOẠI SẢN PHẨM</h1>
-                        
+                        <h2 class="pro_type_title">LOẠI SẢN PHẨM</h2>
+                        <table border="2" class="table_pro_type">
+                            <tr>
+                                <th>LOẠI SẢN PHẨM</th>
+                                <th>HÌNH ẢNH</th>
+                                <th>DANH MỤC</th>
+                            </tr>
+                            <?php display_pro_type($conn); ?>
+                        </table>
                     </div>
                 </div>
             </div>

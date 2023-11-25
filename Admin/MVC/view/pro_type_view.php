@@ -29,7 +29,7 @@ include('../model/connect.php');
         </td>
         <td>'.getNameCate($id, $conn).'</td>
         <td>
-            <form action="./edit_type.php" method="post">
+            <form action="./edit_type_view.php" method="post">
                 <input type="hidden" name="id_type" value="'.$type['IdProductType'].'">
                 <input type="submit" class="submit_btn" value="SỬA">
             </form>

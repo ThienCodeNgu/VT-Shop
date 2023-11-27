@@ -1,9 +1,80 @@
 <?php
-require('../model/category_list.php');
-if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
-    $id_cate = $_POST['cate_id'];
-    $name_cate = $_POST['cate_name'];
+
+$id_type = $_POST['id_type'];
+if (isset($id_type)){
+    // hàm lấy danh sách tất cả các danh mục
+    function get_NameCate (){
+        include('../model/connect.php');
+        $sql = "select * from category";
+        $statement = $conn ->prepare($sql);
+        $statement -> execute();
+        $result = $statement -> fetchAll();
+        // Khai báo một chuỗi để chứa tất cả các <option>
+    $options = '';
+
+    foreach ($result as $rs) {
+        $options .= '<option value="' . $rs['CateID'] . '">' . $rs['CateName'] . '</option>';
+    }
+
+    // Trả về chuỗi đã xây dựng
+    return $options;
+        
+    } 
+    // kết nối cơ sở dữ liệu và lấy thông tin của loại sản phẩm
+    function display ($id_type){
+        include ('../model/connect.php');
+        $sql = "select * from producttype where IdProductType = '$id_type'";
+        $statement = $conn->prepare($sql); 
+        $statement -> execute();
+        $rs = $statement -> fetch();
+
+        //hiển thị phần content của page sửa loại sản phẩm
+        echo '
+    <div class="exit_button">
+    <i class="fa-regular fa-circle-xmark exit_icon"></i>
+    </div>
+    <h2 class="edit_type_title">SỬA LOẠI SẢN PHẨM</h2>
+    <form action="../model/edit_type.php" method="post">
+        <table class="table_type">
+            <tr>
+                <th>
+                    Tên Loại Sản Phẩm:
+                </th>
+                <td>
+                    <input type="text" name="newType_name" class="input_text" placeholder="'.$rs['NameProductType'].'">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Hình ảnh:
+                </th>
+                <td>
+                    <input class="choose_file" type="file" name="file" id="file" accept="image/*">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Danh Mục:
+                </th>
+                <td>
+                    <select name="select_category">
+                        '.get_NameCate().'
+                    </select>
+                </td>
+            </tr>
+            <tr >
+                <td colspan="2">
+                    <input class="input_submit" name="submit" type="submit" value="SỬA">
+                </td>
+            </tr>
+        </table>
+    </form>
+            ';
+    }
+    
+
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,14 +105,7 @@ if (isset($_POST['cate_id']) && isset($_POST['cate_name'])){
                         <?php require_once('./function_list.php') ?>
                     </div>
                     <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 view_content">
-                        <div class="exit_button">
-                            <i class="fa-regular fa-circle-xmark exit_icon"></i>
-                        </div>
-
-                        <h2 class="edit_type_title">SỬA LOẠI SẢN PHẨM</h2>
-                        
-                        
-                        
+                        <?php display($id_type); ?>
                     </div>
                 </div>
             </div>

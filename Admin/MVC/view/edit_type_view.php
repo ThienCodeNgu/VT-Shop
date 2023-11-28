@@ -41,6 +41,7 @@ if (isset($id_type)){
                     Tên Loại Sản Phẩm:
                 </th>
                 <td>
+                    <input type="hidden" name="id_type" value="'.$rs['IdProductType'].'">
                     <input type="text" name="newType_name" class="input_text" placeholder="'.$rs['NameProductType'].'">
                 </td>
             </tr>

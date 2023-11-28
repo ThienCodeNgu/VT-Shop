@@ -87,6 +87,9 @@ include('../model/connect.php');
                             </tr>
                             <?php display_pro_type($conn); ?>
                         </table>
+                        <form action="./add_type_view.php">
+                            <input type="submit" class="add_submit" value="THÊM">
+                        </form>
                     </div>
                 </div>
             </div>

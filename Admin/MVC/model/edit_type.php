@@ -8,7 +8,7 @@ if (isset($submit) ){
     $select = $_POST['select_category'];
 
     // xử lí tên lsp
-    if (isset($newName)){
+    if (isset($newName) && $newName != ""){
         $sql = "UPDATE producttype 
         set 
         NameProductType = '$newName' 
@@ -23,7 +23,8 @@ if (isset($submit) ){
         </script>
             ';
     }
-    else if (!empty($_FILES['file']['name'])){
+
+    if (!empty($_FILES['file']['name'])){
           //Xử lí hình ảnh
     $targetDirectory = "../../../ASSET/IMAGES/";
     $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
@@ -68,7 +69,9 @@ if (isset($submit) ){
     } else {
         echo "Chỉ chấp nhận các định dạng hình ảnh: JPG, JPEG, PNG, GIF.";
     }
-    }else if (isset($select)){ // xử lí danh mục
+    }
+
+    if (isset($select) && $select != ""){ // xử lí danh mục
         $sql = "UPDATE producttype 
         set 
         CateID = '$select' 
@@ -82,10 +85,10 @@ if (isset($submit) ){
         </script>
             ';
     }
+    
 
     echo '
         <script>
-            alert ("Đổi danh mục thành công!");
             window.location.href = "../view/pro_type_view.php";
         </script>
     ';

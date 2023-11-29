@@ -14,29 +14,22 @@
     color: red;
 }
 
-.table_add_type{
+.table_add{
     width: 100%;
-    margin-top: 10px;
-}
-.input_text{
-    width: 100%;
-    outline: none;
-    border: none;
-    border-radius: 2px;  
 }
 input{
-    margin-bottom: 10px;
-    padding: 5px;  
+    width: 100%;
 }
-.btn_file{
-    width: 30%;
+
+.btn_submit{
+    margin-top: 15px;
     float: right;
-    margin-top: 10px;
+    width: 30%;
     background-color: rgb(5, 195, 5);
     color: white;
     outline: none;
     border: none;
 }
-.btn_file:hover{
+.btn_submit:hover{
     background-color: rgb(18, 119, 18);
 }

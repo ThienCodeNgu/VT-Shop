@@ -12,10 +12,52 @@ foreach ($result as $rs) {
     $options .= '<option value="' . $rs['CateID'] . '">' . $rs['CateName'] . '</option>';
 }
 // Trả về chuỗi đã xây dựng
-echo $options;
+return $options;
 } 
 //hiển thị phần content thêm loại sản phẩm
-
+function display_content (){
+    echo '
+    <div class="exit_button">
+    <i class="fa-regular fa-circle-xmark exit_icon"></i>
+</div>
+<h2 class="add_type_title">THÊM LOẠI SẢN PHẨM</h2>
+<form action="../model/add_type.php" method="post" enctype="multipart/form-data">
+    <table class="table_add">
+        <tr>
+            <th>
+                <Label>Tên Loại Sản Phẩm:</Label>
+            </th>
+            <td>
+                <input type="text" name="name_type" class="input_name">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label class="lbl_chooseImage" for="file">Chọn Hình Ảnh:</label>
+            </th>
+            <td>
+                <input class="choose_file" type="file" name="file" id="file" accept="image/*">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <Label>Chọn Danh Mục:</Label>
+            </th>
+            <td>
+                <select name="select_category">
+                    '.get_NameCate().'
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button name="submit" type="submit" class="btn_submit">Thêm</button>
+            </td>
+        </tr>
+    </table> 
+</form>
+    ';
+}
 
 ?>
 <!DOCTYPE html>
@@ -48,49 +90,7 @@ echo $options;
                         <?php require('./function_list.php') ?>
                     </div>
                     <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 view_content">
-                        <div class="exit_button">
-                            <i class="fa-regular fa-circle-xmark exit_icon"></i>
-                        </div>
-                        <h2 class="add_type_title">THÊM LOẠI SẢN PHẨM</h2>
-                        <form action="../model/add_type.php" method="post" enctype="multipart/form-data">
-                            <table class="table_add">
-                                <tr>
-                                    <th>
-                                        <Label>Tên Loại Sản Phẩm:</Label>
-                                    </th>
-                                    <td>
-                                        <input type="text" name="name_type" class="input_name">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label class="lbl_chooseImage" for="file">Chọn Hình Ảnh:</label>
-                                    </th>
-                                    <td>
-                                        <input class="choose_file" type="file" name="file" id="file" accept="image/*">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <Label>Chọn Danh Mục:</Label>
-                                    </th>
-                                    <td>
-                                        <select name="select_category">
-                                            <?php get_NameCate(); ?>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <button name="submit" type="submit" class="btn_submit">Thêm</button>
-                                    </td>
-                                </tr>
-
-                            </table>
-               
-                            
-                            
-                        </form>
+                        <?php display_content(); ?>
                     </div>
                 </div>
             </div>

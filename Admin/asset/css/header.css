@@ -1,0 +1,193 @@
+#header {
+    height: 48px;
+    width: 100%;
+    background-color: rgba(54, 49, 47, 0.846);
+    display: flex;
+    align-items: center;
+}
+
+.bars {
+    width: 10%;
+}
+
+.boxBars {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(86, 80, 80);
+    margin: auto;
+    text-align: center;
+    background-color: rgb(29, 28, 28);
+    cursor: pointer;
+}
+
+.boxBars i {
+    margin-top: 8px;
+    font-size: 20px;
+    color: white;
+}
+
+.logo {
+    width: 10%;
+    text-align: center;
+}
+
+.shopname {
+    text-align: center;
+    width: 60%;
+}
+
+.lbl_shopname {
+    font-size: 20px;
+    color: white;
+}
+
+.notify {
+    text-align: center;
+    width: 5%;
+    position: relative;
+}
+
+.notify i {
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    margin-top: 8px;
+}
+.notify i:hover + .notify_popup,
+.notify_popup:hover{
+    display: block;
+}
+@keyframes notify {
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+.notify_popup{
+    top: 38px;
+    right: 40%;
+    position: absolute;
+    width: 200px;
+    height: auto;
+    background-color: rgb(158, 153, 153);
+    display: none;
+    transform-origin: top right ;
+    animation: notify ease-out 0.3s;
+}
+.notify_list{
+    list-style: none;
+    padding: 0;
+}
+.notify_item{
+    text-align: left;
+    padding-left: 5px;
+    color: white;
+    font-weight: 300;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+}
+.notify_item::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 15px solid rgb(158, 153, 153);
+    right: 0;
+    top: -14px;
+}
+.notify_item:hover{
+    background-color: rgb(107, 103, 103);
+    padding: 0 0 0 8px;
+}
+
+.mesage {
+    width: 5%;
+    text-align: center;
+}
+
+.mesage {
+    font-size: 18px;
+    color: white;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.account {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.account:hover .acc_popup{
+    display: block;
+}
+
+.accName {
+    width: 70%;
+    font-size: 18px;
+    color: white;
+    margin-top: 8px;
+    position: relative;
+}
+
+.account i {
+    width: 30%;
+    margin-top: 8px;
+    font-size: 18px;
+    color: white;
+}
+
+.acc_popup{
+    display: none;
+    top: 45px;
+    right: 15px;
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    background-color: rgb(158, 153, 153);
+    z-index: 2;
+}
+.acc_popup::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(158, 153, 153);
+    right: 0;
+    top: -10px;
+    z-index: 0;
+}
+.acc_function_list{
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+.acc_item{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.acc_item:hover{
+    background-color: rgb(107, 103, 103);
+}
+.acc_item i{
+    width: 30%;
+    text-align: center;
+}
+.acc_item a{
+    width: 70%;
+    text-align: left;
+    padding-left: 20px;
+    text-decoration: none;
+    color: white;
+}

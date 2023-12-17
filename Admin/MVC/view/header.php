@@ -72,7 +72,7 @@ include ("mvc/model/connect.php");
                             <a class="link" href="index.php?act=category_manage">Quản lí danh mục</a>
                         </button>
                         <button class="value">
-                            <a class="link" href="">Quản lí loại sản phẩm</a>
+                            <a class="link" href="index.php?act=product_type_management">Quản lí loại sản phẩm</a>
                         </button>
                         <button class="value">
                             <a class="link" href="">Quản lí logo</a>

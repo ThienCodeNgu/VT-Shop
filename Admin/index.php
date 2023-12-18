@@ -25,11 +25,6 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id = $_GET['id'];
                     delete_category($conn, $id);
-                    echo "
-                    <script>
-                    alert('Xóa danh mục hoàn tất!');
-                    </script>
-                    ";
                 }
                 include('./mvc/view/category.php');
                 break;
@@ -58,6 +53,27 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
             case 'product_type_management':
                 //hiển thị trang quản lí loại sản phẩm
                 include('./mvc/view/protype.php');
+                break;
+            case 'edit_protype':
+                //sửa loại sản phẩm
+                if (isset($_GET['id']) && is_numeric($_GET['id'])){
+                    $id = $_GET['id'];
+                    $protypes = getOne_protype($conn, $id);
+                    include ('./mvc/view/edit_protype.php');
+                }
+                if (isset($_POST['id_protype']) && is_numeric($_POST['id_protype'])){
+                    $id = $_POST['id_protype'];
+                    $nameProType = $_POST['new_protypeName'];
+                    
+                }
+                break;
+            case 'delete_protype':
+                //xóa loại sản phẩm
+                if (isset($_GET['id']) && is_numeric($_GET['id'])){
+                    $id = $_GET['id'];
+                    delete_protype($conn, $id);
+                    include('./mvc/view/protype.php');
+                }
                 break;
             default:
                 break;

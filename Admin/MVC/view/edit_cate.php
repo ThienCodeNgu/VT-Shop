@@ -1,6 +1,4 @@
 <?php
-include('mvc/model/connect.php');
-ob_start();
 function show_one_cate ($categories){
     foreach ($categories as $category){
         echo '

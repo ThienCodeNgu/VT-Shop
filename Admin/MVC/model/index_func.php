@@ -44,4 +44,27 @@ function getOne_protype ($conn, $id){
         $rs = $statement->fetchAll();
         return $rs;
 }
+
+function edit_protype($conn, $id, $nameProType,$oldIdCate, $select){
+        if ($nameProType == "" && ($oldIdCate == $select)){
+                // nếu tên loại sản phẩm mới rỗng 
+                // và id danh mục cũ bằng id danh mục mới thì không tiền hành sửa thông tin
+        } else {
+                if ($nameProType != ""){
+                        $sql = "update producttype set NameProductType = '$nameProType' where IdProductType = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($oldIdCate != $select){
+                        $sql = "UPDATE producttype 
+                        set 
+                        CateID = '$select' 
+                        WHERE IdProductType = '$id'";
+                        $statement = $conn -> prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+        }
+}
 ?>

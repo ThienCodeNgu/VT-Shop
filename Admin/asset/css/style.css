@@ -94,6 +94,7 @@
   border-radius: 3px;
   color: black;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .col-70 {
@@ -113,11 +114,13 @@
 .edit_btn{
   border-radius: 3px;
   background-color: rgb(251, 251, 30);
+  border: none;
 }
 .edit_btn:hover{
   background-color: rgb(202, 202, 12);
 }
 .red_btn{
+  border: none;
   border-radius: 3px;
   background-color: rgb(248, 52, 52);
 }
@@ -126,6 +129,7 @@
 }
 
 .green_btn{
+  border: none;
   border-radius: 3px;
   background-color: rgb(21, 236, 21);
 }
@@ -135,5 +139,11 @@
 .text_center{
   text-align: center !important;
 }
-
+.input_css{
+  height: 40px;
+  padding: 5px 0 5px 10px;
+  background-color: white;
+  outline: none;
+  margin-bottom: 10px;
+}
 

@@ -44,7 +44,7 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 break;
             case 'add_cate':
                 //thêm danh mục
-                if (isset($_POST['add_cateName'])){
+                if (isset($_POST['add_cateName'])) {
                     $cateName = $_POST['add_cateName'];
                     addCategory($conn, $cateName);
                     include('./mvc/view/category.php');
@@ -56,24 +56,98 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 break;
             case 'edit_protype':
                 //sửa loại sản phẩm
-                if (isset($_GET['id']) && is_numeric($_GET['id'])){
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id = $_GET['id'];
                     $protypes = getOne_protype($conn, $id);
-                    include ('./mvc/view/edit_protype.php');
+                    include('./mvc/view/edit_protype.php');
                 }
-                if (isset($_POST['id_protype']) && is_numeric($_POST['id_protype'])){
+                if (isset($_POST['id_protype']) && is_numeric($_POST['id_protype'])) {
                     $id = $_POST['id_protype'];
                     $nameProType = $_POST['new_protypeName'];
-                    
+                    $oldIdCate = $_POST['oldIDcate'];
+                    $select = $_POST['select_category'];
+                    edit_protype($conn, $id, $nameProType, $oldIdCate, $select);
+
+                    if (!empty($_FILES['file']['name'])) {
+                        //Xử lí hình ảnh
+                        $targetDirectory = "./asset/image/";
+                        $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
+                        // Kiểm tra xem file có phải là hình ảnh thực sự hay không
+                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                        $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
+                        if (in_array($imageFileType, $allowedExtensions)) {
+                            // Di chuyển file từ thư mục tạm lưu vào thư mục đích
+                            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                                // sau khi chuyển ảnh mới vào asset-images 
+                                // tách chuỗi ra để có link chính xác lưu vào database
+                                $arr = explode('./', $targetFile);
+                                $NewLink = $arr[1];
+                                // tiếp theo ta truy vấn database và đổi link ảnh
+                                //đầu tiên truy vấn csdl để lấy link ảnh cũ
+                                $query = "select * from producttype where IdProductType = '$id'";
+                                $result = $conn->prepare($query);
+                                $result->execute();
+                                $rows = $result->fetch();
+                                // Xóa ảnh cũ trong folder image
+                                unlink('./' . $rows['ImageProductType']);
+                                //đổi link ảnh
+                                $sql = "UPDATE producttype 
+                                    set 
+                                    ImageProductType = '$NewLink' 
+                                    WHERE IdProductType = '$id'";
+                                $statement = $conn->prepare($sql);
+                                $statement->execute();
+                                $statement->closeCursor();
+                            }
+                        }
+                    }
+                    include("./mvc/view/protype.php");
                 }
                 break;
             case 'delete_protype':
                 //xóa loại sản phẩm
-                if (isset($_GET['id']) && is_numeric($_GET['id'])){
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id = $_GET['id'];
                     delete_protype($conn, $id);
                     include('./mvc/view/protype.php');
                 }
+                break;
+            case 'add_protype':
+                //thêm loại sản phẩm
+                if (isset($_GET['id']) && $_GET['id']== "add"){
+                    //hiển thị trang thêm loại sản phẩm
+                    include('./mvc/view/add_protype.php');
+                }
+                //xử lí thêm loại sản phẩm
+                if (isset($_POST['name_protype'])) {
+                    $name = $_POST['name_protype'];
+                    $cateID = $_POST['select_category'];
+                    if (!empty($_FILES['file']['name'])) { 
+                        //Xử lí hình ảnh
+                        $targetDirectory = "./asset/image/";
+                        $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
+                        // Kiểm tra xem file có phải là hình ảnh thực sự hay không
+                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                        $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
+                        if (in_array($imageFileType, $allowedExtensions)) {
+                            // Di chuyển file từ thư mục tạm lưu vào thư mục đích
+                            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                                // sau khi chuyển ảnh mới vào asset-images 
+                                // tách chuỗi ra để có link chính xác lưu vào database
+                                $arr = explode('./', $targetFile);
+                                $NewLink = $arr[1];
+                                // tiếp theo ta truy vấn database và đổi link ảnh
+                                //đổi link ảnh
+                                $sql = "insert into producttype  
+                                    value ('null', '$name', '$NewLink', '$cateID');";
+                                $statement = $conn->prepare($sql);
+                                $statement->execute();
+                                $statement->closeCursor();
+                                include("./mvc/view/protype.php");
+                            }
+                        }
+                    }
+                }   
                 break;
             default:
                 break;

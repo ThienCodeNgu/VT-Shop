@@ -53,4 +53,9 @@ function show_protype($conn)
         </tr>
         <?php show_protype($conn); ?>
     </table>
+    <a 
+    style="display: block; width:100px; height: 30px; text-align: center; color: white; text-decoration: none; margin-top: 50px; float: right; line-height: 30px;" 
+    class="green_btn" href="index.php?act=add_protype&id=add">
+    thêm
+    </a>
 </div>

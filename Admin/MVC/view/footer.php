@@ -12,5 +12,6 @@
             <span>make by vothien from VKU</span>
         </div>
     </footer>
+    <script src="./mvc/control/display_menu.js"></script>
 </body>
 </html>

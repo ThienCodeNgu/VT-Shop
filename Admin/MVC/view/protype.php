@@ -18,7 +18,7 @@ function total_rows($conn)
 function display_number_page($conn)
 {   
     $total_row = total_rows($conn);
-    $value = 3;
+    $value = 4;
     $page = ceil($total_row / $value);
     for ($i = 1; $i <= $page; $i++) {
         echo '
@@ -31,7 +31,7 @@ function display_number_page($conn)
 function show_protype($conn, $active_page)
 {
     //
-    $value = 3; // số phần tử trên một trang
+    $value = 4; // số phần tử trên một trang
     //  // số trang sẽ bằng tổng dòng trong bảng muốn lấy dữ liệu chia cho số trang, nhưng phải làm tròn lên
 
     $from = ($active_page - 1) * $value; // số phần tử lấy từ đâu
@@ -67,9 +67,9 @@ function show_protype($conn, $active_page)
 }
 ?>
 
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="func_title">Quản lí loại sản phẩm</h3>
-    <table style="height: 245px;" class="table_manage">
+    <table style="height: 310px;" class="table_manage">
         <tr>
             <th>STT</th>
             <th>Tên loại sản phẩm</th>

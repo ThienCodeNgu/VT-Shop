@@ -29,7 +29,7 @@ function show_category($conn)
 }
 ?>
 
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="func_title">Quản lí danh mục</h3>
     <table class="table_manage">
         <tr>

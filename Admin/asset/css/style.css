@@ -107,6 +107,9 @@
 .col-10 {
   width: 10%;
 }
+.col-30 {
+  width: 30%;
+}
 .col-40 {
   width: 40%;
 }
@@ -165,4 +168,11 @@
   background-color: rgb(125, 125, 125);
   width: 25px;
   height: 25px;
+}
+.add_product_btn{
+  display: block;
+  text-decoration: none;
+  color: black;
+  width: 100px;
+  text-align: center;
 }

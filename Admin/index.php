@@ -50,9 +50,9 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 }
                 break;
             case 'product_type_manage':
-                if (isset($_GET['active_page'])){
+                if (isset($_GET['active_page'])) {
                     $active_page = $_GET['active_page'];
-                }else {
+                } else {
                     $active_page = 1;
                 }
                 //hiển thị trang quản lí loại sản phẩm
@@ -105,9 +105,9 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                             }
                         }
                     }
-                    if (isset($_GET['active_page'])){
+                    if (isset($_GET['active_page'])) {
                         $active_page = $_GET['active_page'];
-                    }else {
+                    } else {
                         $active_page = 1;
                     }
                     include("./mvc/view/protype.php");
@@ -118,9 +118,9 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id = $_GET['id'];
                     delete_protype($conn, $id);
-                    if (isset($_GET['active_page'])){
+                    if (isset($_GET['active_page'])) {
                         $active_page = $_GET['active_page'];
-                    }else {
+                    } else {
                         $active_page = 1;
                     }
                     include('./mvc/view/protype.php');
@@ -157,9 +157,9 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                                 $statement = $conn->prepare($sql);
                                 $statement->execute();
                                 $statement->closeCursor();
-                                if (isset($_GET['active_page'])){
+                                if (isset($_GET['active_page'])) {
                                     $active_page = $_GET['active_page'];
-                                }else {
+                                } else {
                                     $active_page = 1;
                                 }
                                 include("./mvc/view/protype.php");
@@ -212,6 +212,10 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 } else {
                     include('./mvc/view/logo.php');
                 }
+                break;
+            case 'product_manage':
+                //hiển thị trang quản lí sản phẩm
+                include('./mvc/view/product.php');
                 break;
             case 'profile':
                 //quản lí trang cá nhân

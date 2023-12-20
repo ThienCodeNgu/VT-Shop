@@ -15,6 +15,32 @@ include ("mvc/model/connect.php");
     <title>VT-SHOP</title>
 </head>
 <body>
+    <div class="back hidden">
+        <div class="menu_admin">
+            <button class="out_btn">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <h3 style="color: white;" class="func_title">VT-SHOP _ ADMIN MENU</h3>
+            <ul class="menu_list">
+                <li class="menu_item">
+                    <a href="index.php?act=home" class="menu_link">Trang chủ</a>
+                </li>
+                <li class="menu_item">
+                    <a href="index.php?act=category_manage" class="menu_link">Quản lí danh mục</a>
+                </li>
+                <li class="menu_item">
+                    <a href="index.php?act=product_type_manage" class="menu_link">Quản lí loại sản phẩm</a>
+                </li>
+                <li class="menu_item">
+                    <a href="index.php?act=product_manage" class="menu_link">Quản lí sản phẩm</a>
+                </li>
+                <li class="menu_item">
+                    <a href="index.php?act=logo_manage" class="menu_link">Quản lí logo</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
     <head>
         <div id="header">
             <div class="bars">
@@ -48,10 +74,6 @@ include ("mvc/model/connect.php");
                 <div class="acc_popup">
                     <ul class="acc_function_list">
                         <li class="acc_item">
-                            <i class="fa-solid fa-id-card"></i>
-                            <a href="index.php?act=profile">Profile</a>
-                        </li>
-                        <li class="acc_item">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             <a href="index.php?act=logout">Đăng xuất</a>
                         </li>
@@ -63,19 +85,4 @@ include ("mvc/model/connect.php");
     <div class="home">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <div class="input">
-                        <button class="value">
-                            <a class="link" href="index.php?act=home">Trang chủ</a>
-                        </button>
-                        <button class="value">
-                            <a class="link" href="index.php?act=category_manage">Quản lí danh mục</a>
-                        </button>
-                        <button class="value">
-                            <a class="link" href="index.php?act=product_type_manage">Quản lí loại sản phẩm</a>
-                        </button>
-                        <button class="value">
-                            <a class="link" href="index.php?act=logo_manage">Quản lí logo</a>
-                        </button>
-                      </div>
-                </div>
+                

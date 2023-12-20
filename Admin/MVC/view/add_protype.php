@@ -15,7 +15,7 @@ function get_listCate ($conn)
 }
 ?>
 
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="func_title">thêm loại sản phẩm</h3>
     <form action="index.php?act=add_protype" method="post" enctype="multipart/form-data">
         <input style="width: 70%;" class="input_css" type="text" name="name_protype" placeholder="Nhập tên loại sản phẩm" required>

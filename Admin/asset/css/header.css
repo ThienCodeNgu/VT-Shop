@@ -151,7 +151,7 @@
     right: 15px;
     position: absolute;
     width: 150px;
-    height: 100px;
+    
     background-color: rgb(158, 153, 153);
     z-index: 2;
     transform-origin: top right;
@@ -193,4 +193,56 @@
     padding-left: 20px;
     text-decoration: none;
     color: white;
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.497);
+}
+.menu_admin{
+    position: relative;
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(12, 10, 10);
+}
+.out_btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+}
+.out_btn:hover{
+    color: red;
+}
+.menu_list{
+    list-style: none;
+    padding: 0;
+}
+.menu_item{
+    width: 100%;
+    width: 100%;
+    padding: 10px;
+}
+.menu_item:hover{
+    background-color: rgb(89, 88, 88);
+}
+.menu_link{
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+.block{
+    display: block;
+}
+.hidden{
+    display: none;
 }

@@ -65,7 +65,7 @@ function show_one_protype($protypes, $conn)
     }
 }
 ?>
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="func_title">sửa loại sản phẩm</h3>
     <?php show_one_protype($protypes, $conn) ?>
 </div>

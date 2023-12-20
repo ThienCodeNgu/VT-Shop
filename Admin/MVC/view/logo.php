@@ -1,4 +1,4 @@
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="func_title">Quản lí logo</h3>
     <form action="index.php?act=logo_manage&id=edit_logo" method="post" enctype="multipart/form-data">
     <table class="table_manage">

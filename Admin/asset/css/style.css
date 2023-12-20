@@ -94,7 +94,6 @@
   border-radius: 3px;
   color: black;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .col-70 {
@@ -110,6 +109,9 @@
 }
 .col-40 {
   width: 40%;
+}
+.col-50 {
+  width: 50%;
 }
 .edit_btn{
   border-radius: 3px;
@@ -146,4 +148,21 @@
   outline: none;
   margin-bottom: 10px;
 }
-
+.page_list{
+  margin-top: 200px;
+  float: right;
+  padding: 0;
+}
+.page_item{
+  display: inline-block;
+} 
+.page_item a{
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  display: block;
+  background-color: rgb(125, 125, 125);
+  width: 25px;
+  height: 25px;
+}

@@ -49,7 +49,7 @@ include ("mvc/model/connect.php");
                     <ul class="acc_function_list">
                         <li class="acc_item">
                             <i class="fa-solid fa-id-card"></i>
-                            <a href="">Profile</a>
+                            <a href="index.php?act=profile">Profile</a>
                         </li>
                         <li class="acc_item">
                             <i class="fa-solid fa-right-from-bracket"></i>
@@ -72,10 +72,10 @@ include ("mvc/model/connect.php");
                             <a class="link" href="index.php?act=category_manage">Quản lí danh mục</a>
                         </button>
                         <button class="value">
-                            <a class="link" href="index.php?act=product_type_management">Quản lí loại sản phẩm</a>
+                            <a class="link" href="index.php?act=product_type_manage">Quản lí loại sản phẩm</a>
                         </button>
                         <button class="value">
-                            <a class="link" href="">Quản lí logo</a>
+                            <a class="link" href="index.php?act=logo_manage">Quản lí logo</a>
                         </button>
                       </div>
                 </div>

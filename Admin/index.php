@@ -2,7 +2,6 @@
 session_start();
 ob_start();
 if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
-    include("./mvc/model/connect.php");
     include("./mvc/view/header.php");
     include("./mvc/model/index_func.php");
     if (isset($_GET['act'])) {
@@ -50,7 +49,12 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                     include('./mvc/view/category.php');
                 }
                 break;
-            case 'product_type_management':
+            case 'product_type_manage':
+                if (isset($_GET['active_page'])){
+                    $active_page = $_GET['active_page'];
+                }else {
+                    $active_page = 1;
+                }
                 //hiển thị trang quản lí loại sản phẩm
                 include('./mvc/view/protype.php');
                 break;
@@ -101,6 +105,11 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                             }
                         }
                     }
+                    if (isset($_GET['active_page'])){
+                        $active_page = $_GET['active_page'];
+                    }else {
+                        $active_page = 1;
+                    }
                     include("./mvc/view/protype.php");
                 }
                 break;
@@ -109,12 +118,17 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id = $_GET['id'];
                     delete_protype($conn, $id);
+                    if (isset($_GET['active_page'])){
+                        $active_page = $_GET['active_page'];
+                    }else {
+                        $active_page = 1;
+                    }
                     include('./mvc/view/protype.php');
                 }
                 break;
             case 'add_protype':
                 //thêm loại sản phẩm
-                if (isset($_GET['id']) && $_GET['id']== "add"){
+                if (isset($_GET['id']) && $_GET['id'] == "add") {
                     //hiển thị trang thêm loại sản phẩm
                     include('./mvc/view/add_protype.php');
                 }
@@ -122,7 +136,7 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 if (isset($_POST['name_protype'])) {
                     $name = $_POST['name_protype'];
                     $cateID = $_POST['select_category'];
-                    if (!empty($_FILES['file']['name'])) { 
+                    if (!empty($_FILES['file']['name'])) {
                         //Xử lí hình ảnh
                         $targetDirectory = "./asset/image/";
                         $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
@@ -143,11 +157,65 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                                 $statement = $conn->prepare($sql);
                                 $statement->execute();
                                 $statement->closeCursor();
+                                if (isset($_GET['active_page'])){
+                                    $active_page = $_GET['active_page'];
+                                }else {
+                                    $active_page = 1;
+                                }
                                 include("./mvc/view/protype.php");
                             }
                         }
                     }
-                }   
+                }
+                break;
+            //quản lí logo
+            case 'logo_manage':
+                if (isset($_POST['submit'])) {
+                    //hiển thị trang quản lí logo
+                    if (isset($_GET['id']) && $_GET['id'] == "edit_logo") {
+                        if (!empty($_FILES['file']['name'])) {
+                            //Xử lí hình ảnh
+                            //đầu tiên truy vấn csdl để lấy link ảnh cũ
+                            $query = "select * from logo where idLogo = '1'";
+                            $result = $conn->prepare($query);
+                            $result->execute();
+                            $rows = $result->fetch();
+                            // Xóa ảnh cũ trong folder image
+                            unlink('./' . $rows['linkLogo']);
+                            $targetDirectory = "./asset/image/";
+                            $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
+                            // Kiểm tra xem file có phải là hình ảnh thực sự hay không
+                            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                            $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
+                            if (in_array($imageFileType, $allowedExtensions)) {
+                                // Di chuyển file từ thư mục tạm lưu vào thư mục đích
+                                if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                                    // sau khi chuyển ảnh mới vào asset-images 
+                                    // tách chuỗi ra để có link chính xác lưu vào database
+                                    $arr = explode('./', $targetFile);
+                                    $NewLink = $arr[1];
+                                    // tiếp theo ta truy vấn database và đổi link ảnh
+                                    //đổi link ảnh
+                                    $sql = "UPDATE logo 
+                                    set 
+                                    linkLogo = '$NewLink' 
+                                    WHERE idLogo = '1'";
+                                    $statement = $conn->prepare($sql);
+                                    $statement->execute();
+                                    $statement->closeCursor();
+
+                                }
+                            }
+                        }
+                        include("./mvc/view/logo.php");
+                    }
+                } else {
+                    include('./mvc/view/logo.php');
+                }
+                break;
+            case 'profile':
+                //quản lí trang cá nhân
+                include('./mvc/view/profile.php');
                 break;
             default:
                 break;

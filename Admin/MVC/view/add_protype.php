@@ -1,5 +1,4 @@
 <?php 
-include('mvc/model/connect.php');
 function get_listCate ($conn)
 {
     $sql = "select * from category";

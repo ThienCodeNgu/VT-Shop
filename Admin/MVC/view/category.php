@@ -1,5 +1,5 @@
 <?php
-include('mvc/model/connect.php');
+
 function show_category($conn)
 {
     $sql = "select * from category";

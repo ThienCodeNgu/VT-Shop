@@ -215,7 +215,134 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 break;
             case 'product_manage':
                 //hiển thị trang quản lí sản phẩm
+                if (isset($_GET['active_page'])) {
+                    $active_page = $_GET['active_page'];
+                } else {
+                    $active_page = 1;
+                }
                 include('./mvc/view/product.php');
+                break;
+            case 'add_product':
+                //thêm sản phẩm
+                if (isset($_GET['id']) && $_GET['id'] == "add") {
+                    $name = $_POST['name'];
+                    $price = $_POST['price'];
+                    $quantity = $_POST['quantity'];
+                    $cpu = $_POST['cpu'];
+                    $ram = $_POST['ram'];
+                    $rom = $_POST['rom'];
+                    $card = $_POST['card'];
+                    $detail = $_POST['detail'];
+                    $id_protype = $_POST['select_protype'];
+                    // xử lí thêm sản phẩm
+                    if (!empty($_FILES['file']['name'])) {
+                        //Xử lí hình ảnh
+                        $targetDirectory = "./asset/image/";
+                        $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
+                        // Kiểm tra xem file có phải là hình ảnh thực sự hay không
+                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                        $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
+                        if (in_array($imageFileType, $allowedExtensions)) {
+                            // Di chuyển file từ thư mục tạm lưu vào thư mục đích
+                            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                                // sau khi chuyển ảnh mới vào asset-images 
+                                // tách chuỗi ra để có link chính xác lưu vào database
+                                $arr = explode('./', $targetFile);
+                                $NewLink = $arr[1];
+                                // tiếp theo ta truy vấn database và đổi link ảnh
+                                //đổi link ảnh
+                                $sql = "insert into product
+                                    value ('null', '$name', '$price', '$quantity', '$NewLink', '$cpu', '$ram', '$rom', '$card', '$detail', '$id_protype');";
+                                $statement = $conn->prepare($sql);
+                                $statement->execute();
+                                $statement->closeCursor();
+                                if (isset($_GET['active_page'])) {
+                                    $active_page = $_GET['active_page'];
+                                } else {
+                                    $active_page = 1;
+                                }
+                                include("./mvc/view/product.php");
+                            }
+                        }
+                    }
+                } else {
+                    include("./mvc/view/add_product.php");
+                }
+                break;
+            case 'delete_product':
+                //xóa sản phẩm
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $id = $_GET['id'];
+                    delete_product($conn, $id);
+                    if (isset($_GET['active_page'])) {
+                        $active_page = $_GET['active_page'];
+                    } else {
+                        $active_page = 1;
+                    }
+                    include("./mvc/view/product.php");
+                }
+                break;
+            case 'edit_product':
+                //sửa sản phẩm
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $products = getOne_product($conn, $id);
+                    include("./mvc/view/edit_product.php");
+                }
+                if (isset($_GET['edit'])) {
+                    if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+                        $id = $_POST['id'];
+                        $name = $_POST['name'];
+                        $price = $_POST['price'];
+                        $quantity = $_POST['quantity'];
+                        $cpu = $_POST['cpu'];
+                        $ram = $_POST['ram'];
+                        $rom = $_POST['rom'];
+                        $card = $_POST['card'];
+                        $detail = $_POST['detail'];
+                        $id_protype = $_POST['select_protype'];
+                        edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $card, $detail, $id_protype);
+                        if (!empty($_FILES['file']['name'])) {
+                            //Xử lí hình ảnh
+                            $targetDirectory = "./asset/image/";
+                            $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
+                            // Kiểm tra xem file có phải là hình ảnh thực sự hay không
+                            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                            $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
+                            if (in_array($imageFileType, $allowedExtensions)) {
+                                // Di chuyển file từ thư mục tạm lưu vào thư mục đích
+                                if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                                    // sau khi chuyển ảnh mới vào asset-images 
+                                    // tách chuỗi ra để có link chính xác lưu vào database
+                                    $arr = explode('./', $targetFile);
+                                    $NewLink = $arr[1];
+                                    // tiếp theo ta truy vấn database và đổi link ảnh
+                                    //đầu tiên truy vấn csdl để lấy link ảnh cũ
+                                    $query = "select * from product where id = '$id'";
+                                    $result = $conn->prepare($query);
+                                    $result->execute();
+                                    $rows = $result->fetch();
+                                    // Xóa ảnh cũ trong folder image
+                                    unlink('./' . $rows['image1']);
+                                    //đổi link ảnh
+                                    $sql = "UPDATE product 
+                                        set 
+                                        image1 = '$NewLink' 
+                                        WHERE id = '$id'";
+                                    $statement = $conn->prepare($sql);
+                                    $statement->execute();
+                                    $statement->closeCursor();
+                                }
+                            }
+                        }
+                        if (isset($_GET['active_page'])) {
+                            $active_page = $_GET['active_page'];
+                        } else {
+                            $active_page = 1;
+                        }
+                        include("./mvc/view/product.php");
+                    }
+                }
                 break;
             case 'profile':
                 //quản lí trang cá nhân

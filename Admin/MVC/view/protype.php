@@ -83,7 +83,9 @@ function show_protype($conn, $active_page)
         class="green_btn" href="index.php?act=add_protype&id=add">
         thêm
     </a>
+    <div class="page">
     <ul class="page_list">
         <?php display_number_page($conn) ?>
     </ul>
+    </div>
 </div>

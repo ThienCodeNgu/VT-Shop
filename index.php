@@ -1,80 +1,46 @@
-<?php 
-include ("./MVC/Model/category.php");
-include ("./MVC/Model/logo.php");
+<?php
+include("./mvc/model/connect.php");
+include("./mvc/model/User.php");
+session_start();
+ob_start();
+if (isset($_SESSION['position']) && $_SESSION['position'] == 0) {
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+        $name = getName($conn, $email);
+        include("./mvc/view/header.php");
+        if (isset($_GET['act'])) {
+            switch ($_GET['act']) {
+                case 'logout':
+                    //nếu act = logout tiến hành đăng xuất và trở về form login
+                    unset($_SESSION['position']);
+                    unset($_SESSION['email']);
+                    header("location: ./page/login.php");
+                    break;
+                default:
+                    break;
+            }
+        }
+        include("./mvc/view/footer.php");
+    }
+} else {
+    include("./mvc/view/header.php");
+    if (isset($_GET['act'])) {
+        switch ($_GET['act']) {
+            case 'login':
+                //đăng nhập
+                header("location: ./page/login.php");
+                break;
+            case 'register':
+                //đăng ký
+                header("location: ./page/register.php");
+                break;
+            default:
+                break;
+        }
+    }
+    include("./mvc/view/footer.php");
+}
+
+
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VT-Shop</title>
-    <!-- link bootstrapts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- link css -->
-    <link rel="stylesheet" href="./ASSET/CSS/main.css">
-    <link rel="stylesheet" href="./ASSET/CSS/reset.css">
-    <link rel="stylesheet" href="./Font/css/all.css">
-</head>
-
-<body>
-    <!-- main -->
-    <div class="main">
-        <!-- begin header -->
-        <div id="header">
-            <!-- begin menu -->
-           <div class="menu">
-             <div class="container">
-                <div class="menu_container">
-                    <div class="logo">
-                        <img class="logoImage" src="<?php get_logo($conn);?>" alt="logoBrand">
-                    </div>
-                    <div class="menu_category">
-                        <ul class="menu_list">
-                            <li class="menu_item">
-                                <a class="menu_item-link" href="">TRANG CHỦ</a>
-                            </li>
-                            <?php
-                                get_category($conn);
-                            ?>
-                        </ul>
-                    </div>
-                    <div class="menu_login">
-                        <div class="menu_login_user">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div class="menu_login_content">
-                            <p>TÀI KHOẢN</p>
-                        </div>
-                    </div>
-                </div>
-             </div>
-           </div>
-           <!-- end menu -->
-           <div class="nav_bar">
-                <div class="container">
-                    
-                </div>
-           </div>
-        </div>
-        <!-- end header -->
-        <div id="app_container"></div>
-        <div id="footer"></div>
-    </div>
-
-    <!--  jQuery first, then Popper.js, then Bootstrap JS  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <!-- link main js -->
-    <script src="./ASSET/JS/main.js"></script>
-</body>
-
-</html>

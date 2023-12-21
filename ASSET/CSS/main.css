@@ -1,0 +1,134 @@
+#header{
+    background-color: rgba(22, 23, 22, 0.783);
+    width: 100%;
+    height: 84px;
+    position: fixed;
+    z-index: 2;
+}
+/* css back and menu */
+.back{
+    background-color: rgba(0, 0, 0, 0.55);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+}
+.menu_form{
+    background-color: black;
+    width: 40%;
+    height: 100%;
+}
+.menu_form button{
+    float: right;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+}
+.menu_form button i{
+    color: white;
+    font-size: 24px;
+}
+.menu_form button i:hover{
+    color: red;
+}
+.title{
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.show{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+
+
+/* css for header */
+.menu{
+    display: flex;
+    justify-content: space-between;
+}
+.bar{
+    width: 10%;
+    height: 84px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+}
+.boxBars{
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(185, 181, 181);
+    cursor: pointer;
+}
+
+.boxBars i{
+    font-size: 30px;
+    padding-top: 5px;
+}
+
+.logo{
+    width: 10%;
+    height: 84px;
+    line-height: 84px;
+}
+
+.search{
+    width: 60%;
+    height: 84px;
+    line-height: 84px;
+    
+}
+.form{
+    height: 84px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input_css{
+    height: 30px;
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(174, 172, 172);
+}
+
+.search_btn{
+    width: 10%;
+    height: 30px;
+    background-color:rgb(46, 46, 45) ;
+    outline: none;
+    line-height: 30px;
+    border: none;
+    border-radius: 20%;
+}
+.search_btn i{
+    color: white;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.account{
+    height: 84px;
+    line-height: 84px;
+    width: 20%;
+    text-align: center;
+}
+.account a{
+    text-decoration: none;
+    color: white ;
+}
+.account a:hover{
+    color: rgb(168, 168, 168);
+}

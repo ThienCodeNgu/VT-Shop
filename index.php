@@ -20,6 +20,7 @@ if (isset($_SESSION['position']) && $_SESSION['position'] == 0) {
                     break;
             }
         }
+        include("./mvc/view/home.php");
         include("./mvc/view/footer.php");
     }
 } else {
@@ -38,6 +39,7 @@ if (isset($_SESSION['position']) && $_SESSION['position'] == 0) {
                 break;
         }
     }
+    include("./mvc/view/home.php");
     include("./mvc/view/footer.php");
 }
 

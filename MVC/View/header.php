@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
         <div class="back hidden">
             <div class="menu_form">
                 <button class="close_btn">
-                <i class="fa-solid fa-circle-xmark"></i>
+                    <i class="fa-solid fa-circle-xmark"></i>
                 </button>
                 <h2 class="title">VT-SHOP MENU</h2>
             </div>
@@ -45,11 +46,14 @@
                     </form>
                 </div>
                 <div class="account">
-                    <?php if (isset($email)){ ?>
-                        <a href="index.php?act=profile"><?=$name?></a> / <a href="index.php?act=logout">Đăng xuất</a>
+                    <?php if (isset($email)) { ?>
+                        <a href="index.php?act=profile">
+                            <?= $name ?>
+                        </a> / <a href="index.php?act=logout">Đăng xuất</a>
                     <?php } else { ?>
-                    <a href="index.php?act=login">Đăng nhập</a> / <a href="index.php?act=register">Đăng ký</a>
+                        <a href="index.php?act=login">Đăng nhập</a> / <a href="index.php?act=register">Đăng ký</a>
                     <?php } ?>
                 </div>
             </div>
         </div>
+        <div id="slider" style="background-image: url(./admin/asset/image/banner4.jpg);"></div>

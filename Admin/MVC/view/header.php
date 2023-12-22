@@ -37,6 +37,9 @@ include ("mvc/model/connect.php");
                 <li class="menu_item">
                     <a href="index.php?act=logo_manage" class="menu_link">Quản lí logo</a>
                 </li>
+                <li class="menu_item">
+                    <a href="index.php?act=profile" class="menu_link">Đổi mật khẩu</a>
+                </li>
                 
             </ul>
         </div>
@@ -65,9 +68,6 @@ include ("mvc/model/connect.php");
                     </ul>
                 </div>
             </div>
-            <div class="mesage">
-                <i class="fa-solid fa-message"></i>
-            </div>
             <div class="account">
                 <Label class="accName">Võ Thiện</Label>
                 <i class="fa-solid fa-user"></i>
@@ -83,6 +83,6 @@ include ("mvc/model/connect.php");
         </div>
     </head>
     <div class="home">
-        <div class="container-fluid">
+        <div class="container-fluid app_content">
             <div class="row">
                 

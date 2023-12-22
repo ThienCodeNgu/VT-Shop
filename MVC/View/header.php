@@ -25,6 +25,29 @@
                     <i class="fa-solid fa-circle-xmark"></i>
                 </button>
                 <h2 class="title">VT-SHOP MENU</h2>
+                <ul class="menu_list">
+                    <li class="menu_item">
+                        <a href="index.php?act=home">Trang chủ</a>
+                    </li>
+                    <?php if (isset($email)) { ?>
+                        <li class="menu_item">
+                            <a href="">Giỏ hàng</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="index.php?act=contact">Liên hệ</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="index.php?act=profile">Trang cá nhân</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="menu_item">
+                            <a href="index.php?act=login">Đăng Nhập</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="index.php?act=register">Đăng ký</a>
+                        </li>
+                    <?php } ?>
+                </ul>
             </div>
         </div>
         <div id="header">
@@ -56,4 +79,3 @@
                 </div>
             </div>
         </div>
-        <div id="slider" style="background-image: url(./admin/asset/image/banner4.jpg);"></div>

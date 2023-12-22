@@ -8,10 +8,11 @@ ob_start();
     include("../mvc/model/connect.php");
     include("../mvc/model/User.php");
     $check = getUser($conn, $email, $pass);
-    $position = get_position($conn, $email, $pass);
-    $_SESSION['position'] = $position;
-    $_SESSION['email'] = $email;
+    // $position = get_position($conn, $email, $pass);
+    // $_SESSION['position'] = $position;
+    
     if ($check == 1){
+      $_SESSION['email'] = $email;
       header ("location: ../index.php");
     }
     else {

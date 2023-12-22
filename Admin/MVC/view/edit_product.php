@@ -41,6 +41,16 @@ function get_listProtype($conn)
                     <input class="css_input" type="file" name="file" accept="image/*">
                     <input class="css_input" type="text" value="CPU: <?= $product['cpu'] ?>" readonly>
                     <input class="css_input" type="text" name="cpu" placeholder="Nhập cpu mới">
+                    <input class="css_input" type="text" value="Màu sắc: <?= $product['color'] ?>" readonly>
+                    <input class="css_input" type="text" name="color" placeholder="Nhập màu sắc mới">
+                    <input class="css_input" type="text" value="Model: <?= $product['model'] ?>" readonly>
+                    <input class="css_input" type="text" name="model" placeholder="Nhập Model mới">
+                    <input class="css_input" type="text" value="Kích thước: <?= $product['size'] ?>" readonly>
+                    <input class="css_input" type="text" name="size" placeholder="Nhập kích thước mới">
+                    <input class="css_input" type="text" value="Socket: <?= $product['socket'] ?>" readonly>
+                    <input class="css_input" type="text" name="socket" placeholder="Nhập socket mới">
+                    <input class="css_input" type="text" value="Nhà sản xuất: <?= $product['producer'] ?>" readonly>
+                    <input class="css_input" type="text" name="producer" placeholder="Nhập nhà sản xuất">
                 </div>
                 <div class="form-right">
                     <input class="css_input" type="text" value="RAM: <?= $product['ram'] ?>" readonly>
@@ -53,9 +63,17 @@ function get_listProtype($conn)
                     <input class="css_input" type="text" name="detail" placeholder="Nhập mô tả mới">
                     <input class="css_input" type="text"
                         value="Loại sản phẩm: <?php getProtype($conn, $product['ID_protype']); ?>" readonly>
-                    <select class="input_css" name="select_protype">
+                    <select style="width: 80%;" class="input_css" name="select_protype">
                         <?php get_listProtype($conn) ?>
                     </select>
+                    <input class="css_input" type="text" value="Loại màn hình: <?= $product['type_screen'] ?>" readonly>
+                    <input class="css_input" type="text" name="type_screen" placeholder="Nhập loại màn hình mới">
+                    <input class="css_input" type="text" value="switch: <?= $product['switch'] ?>" readonly>
+                    <input class="css_input" type="text" name="switch" placeholder="Nhập switch mới">
+                    <input class="css_input" type="text" value="Tốc độ bus: <?= $product['bus'] ?>" readonly>
+                    <input class="css_input" type="text" name="bus" placeholder="Nhập tốc độ bus mới">
+                    <input class="css_input" type="text" value="Bảo hành: <?= $product['guarantee'] ?>" readonly>
+                    <input class="css_input" type="text" name="guarantee" placeholder="Nhập bảo hành">
                 </div>
             </div>
             <div style="width: 100%; text-align: center;">

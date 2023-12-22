@@ -3,7 +3,6 @@ function getUser ($conn, $email, $pass){
     $sql = "select count(*) as result from users where email = '$email' and pass = '$pass' and position ='0';";
     $result = $conn-> prepare( $sql );
     $result->execute();
-
     $rows = $result->fetchAll();
     foreach ($rows as $row) {
         return $row["result"];
@@ -57,5 +56,12 @@ function register($conn, $email, $pass, $fullname, $phone){
     $result->execute();
     $result->closeCursor();  
 }
+function getinfoUser ($conn, $email){
+    $sql = "select * from users where email = '$email';";
+    $result = $conn-> prepare( $sql );
+    $result->execute();
 
+    $rows = $result->fetchAll();
+    return $rows;
+}
 ?>

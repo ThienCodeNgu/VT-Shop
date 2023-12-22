@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
+if (isset($_SESSION['position']) && ($_SESSION['position'] == 1)) {
     include("./mvc/view/header.php");
     include("./mvc/model/index_func.php");
     if (isset($_GET['act'])) {
@@ -232,6 +232,15 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                     $ram = $_POST['ram'];
                     $rom = $_POST['rom'];
                     $card = $_POST['card'];
+                    $color = $_POST['color'];
+                    $model = $_POST['model'];
+                    $size = $_POST['size'];
+                    $type_screen = $_POST['type_screen'];
+                    $switch = $_POST['switch'];
+                    $bus = $_POST['bus'];
+                    $guarantee = $_POST['guarantee'];
+                    $producer = $_POST['producer'];
+                    $socket = $_POST['socket'];
                     $detail = $_POST['detail'];
                     $id_protype = $_POST['select_protype'];
                     // xử lí thêm sản phẩm
@@ -252,7 +261,7 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                                 // tiếp theo ta truy vấn database và đổi link ảnh
                                 //đổi link ảnh
                                 $sql = "insert into product
-                                    value ('null', '$name', '$price', '$quantity', '$NewLink', '$cpu', '$ram', '$rom', '$card', '$detail', '$id_protype');";
+                                    value ('null', '$name', '$price', '$quantity', '$NewLink', '$cpu', '$ram', '$rom', '$card', '$color', '$model','$size','$type_screen','$switch','$bus','$guarantee','$producer','$socket', '$detail', '$id_protype');";
                                 $statement = $conn->prepare($sql);
                                 $statement->execute();
                                 $statement->closeCursor();
@@ -299,9 +308,18 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                         $ram = $_POST['ram'];
                         $rom = $_POST['rom'];
                         $card = $_POST['card'];
+                        $color = $_POST['color'];
+                        $model = $_POST['model'];
+                        $size = $_POST['size'];
+                        $type_screen = $_POST['type_screen'];
+                        $switch = $_POST['switch'];
+                        $bus = $_POST['bus'];
+                        $guarantee = $_POST['guarantee'];
+                        $producer = $_POST['producer'];
+                        $socket = $_POST['socket'];
                         $detail = $_POST['detail'];
                         $id_protype = $_POST['select_protype'];
-                        edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $card, $detail, $id_protype);
+                        edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $card, $color, $model, $size, $type_screen, $switch, $bus, $guarantee, $producer, $socket, $detail, $id_protype);
                         if (!empty($_FILES['file']['name'])) {
                             //Xử lí hình ảnh
                             $targetDirectory = "./asset/image/";
@@ -345,8 +363,15 @@ if (isset($_SESSION['position']) && ($_SESSION['positon'] == 1)) {
                 }
                 break;
             case 'profile':
-                //quản lí trang cá nhân
-                include('./mvc/view/profile.php');
+                //đổi mật mhẩu
+                if (isset($_GET['id']) && $_GET['id']=="admin"){
+                    $email = $_SESSION['email'];
+                    $pass = $_POST['pass'];
+                    changePass($conn, $email, $pass);
+                }else {
+                    include('./mvc/view/profile.php');
+                }
+                
                 break;
             default:
                 break;

@@ -35,6 +35,24 @@ function get_listProtype($conn)
                 placeholder="Nhập rom (nếu có)">
             <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="card"
                 placeholder="Nhập card (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="color"
+                placeholder="Nhập màu sắc (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="model"
+                placeholder="Nhập model (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="size"
+                placeholder="Nhập size (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="type_screen"
+                placeholder="Nhập loại màn hình (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="switch"
+                placeholder="Nhập switch (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="bus"
+                placeholder="Nhập tốc độ bus (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="guarantee"
+                placeholder="Nhập bảo hành (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="producer"
+                placeholder="Nhập nhà sản xuất (nếu có)">
+            <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="socket"
+                placeholder="Nhập socket (nếu có)">
             <input style="width: 100%; margin-bottom: 10px; padding: 5px;" type="text" name="detail"
                 placeholder="Nhập mô tả (nếu có)">
             <select class="input_css" name="select_protype">

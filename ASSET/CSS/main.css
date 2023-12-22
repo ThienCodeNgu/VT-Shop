@@ -1,7 +1,8 @@
-.main{
+.main {
     background-color: rgb(168, 169, 170);
 }
-#header{
+
+#header {
     background-color: rgb(19, 19, 19);
     width: 100%;
     height: 84px;
@@ -11,8 +12,9 @@
     right: 0;
     z-index: 2;
 }
+
 /* css back and menu */
-.back{
+.back {
     background-color: rgba(0, 0, 0, 0.55);
     position: fixed;
     top: 0;
@@ -21,52 +23,81 @@
     left: 0;
     z-index: 3;
 }
-.menu_form{
+
+.menu_form {
     background-color: black;
     width: 40%;
     height: 100%;
 }
-.menu_form button{
+
+.menu_form button {
     float: right;
     width: 30px;
     height: 30px;
     border: none;
     background: none;
 }
-.menu_form button i{
+
+.menu_form button i {
     color: white;
     font-size: 24px;
 }
-.menu_form button i:hover{
+
+.menu_form button i:hover {
     color: red;
 }
-.title{
+
+.title {
     color: white;
     text-align: center;
     padding-top: 30px;
 }
 
-.show{
-    display: block;
+.menu_list {
+    margin-top: 30px;
+    list-style: none;
+    padding-left: 100px;
+    padding-right: 100px;
 }
-.hidden{
+
+.menu_item {
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.menu_item:hover {
+    background-color: rgb(131, 126, 126);
+}
+
+.menu_item a {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.hidden {
     display: none;
 }
 
 
 /* css for header */
-.menu{
+.menu {
     display: flex;
     justify-content: space-between;
 }
-.bar{
+
+.bar {
     width: 10%;
     height: 84px;
     line-height: 84px;
     display: flex;
     align-items: center;
 }
-.boxBars{
+
+.boxBars {
     margin: auto;
     width: 50px;
     height: 50px;
@@ -78,30 +109,32 @@
     cursor: pointer;
 }
 
-.boxBars i{
+.boxBars i {
     font-size: 30px;
     padding-top: 5px;
 }
 
-.logo{
+.logo {
     width: 10%;
     height: 84px;
     line-height: 84px;
 }
 
-.search{
+.search {
     width: 60%;
     height: 84px;
     line-height: 84px;
-    
+
 }
-.form{
+
+.form {
     height: 84px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.input_css{
+
+.input_css {
     height: 30px;
     width: 80%;
     padding: 10px;
@@ -111,31 +144,35 @@
     background-color: rgb(174, 172, 172);
 }
 
-.search_btn{
+.search_btn {
     width: 10%;
     height: 30px;
-    background-color:rgb(46, 46, 45) ;
+    background-color: rgb(46, 46, 45);
     outline: none;
     line-height: 30px;
     border: none;
     border-radius: 20%;
 }
-.search_btn i{
+
+.search_btn i {
     color: white;
     font-size: 20px;
     margin-top: 5px;
 }
-.account{
+
+.account {
     height: 84px;
     line-height: 84px;
     width: 20%;
     text-align: center;
 }
-.account a{
+
+.account a {
     text-decoration: none;
-    color: white ;
+    color: white;
 }
-.account a:hover{
+
+.account a:hover {
     color: rgb(168, 168, 168);
 }
 
@@ -145,10 +182,14 @@
     padding-top: 50%;
     background: top center / cover no-repeat;
 }
-#home{
-    margin-top: 30px;
+
+/* css home */
+#home {
+    padding-top: 84px;
 }
-.product_item{
+
+
+.product_item {
     margin-top: 10px;
     border: 2px solid black;
     background-color: rgb(255, 254, 254);
@@ -157,26 +198,281 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     text-decoration: none;
 }
-.product_item:hover{
+
+.product_item:hover {
     text-decoration: none;
     margin: -10px;
 }
-.product_img{
+
+.product_img {
     padding-top: 100%;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
-.name_product{
+
+.name_product {
     color: black;
     margin-left: 5px;
     font-size: 20px;
-    white-space: nowrap; /* Ngăn ngừa phần tử con từ việc xuống dòng */
-    overflow: hidden; /* Ẩn phần tử con vượt quá chiều rộng của thẻ cha */
-    text-overflow: ellipsis; /* Thay thế phần tử con bị ẩn bằng dấu ... */
+    white-space: nowrap;
+    /* Ngăn ngừa phần tử con từ việc xuống dòng */
+    overflow: hidden;
+    /* Ẩn phần tử con vượt quá chiều rộng của thẻ cha */
+    text-overflow: ellipsis;
+    /* Thay thế phần tử con bị ẩn bằng dấu ... */
 }
-.price_product{
+
+.price_product {
     color: black;
     margin-left: 5px;
     margin-bottom: 5px;
 }
+
+#footer {
+    background-color: rgb(19, 19, 19);
+    color: white;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-link:hover {
+    text-decoration: none;
+    color: rgb(56, 59, 56);
+}
+
+.footer-list {
+    list-style: none;
+}
+
+.footer_content {
+    padding-top: 20px;
+}
+
+.detail_form {
+
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 3px;
+}
+
+.detail_form-img {
+    width: 100%;
+    height: auto;
+}
+
+.detail_rate i {
+    color: yellow;
+}
+
+.price {
+    color: red;
+}
+
+.product_info {
+    border-left: 1px solid white;
+}
+
+.detail_func {
+    display: flex;
+}
+
+.detail_func a {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    border-radius: 5px;
+}
+
+.detail_func a {
+    text-decoration: none;
+}
+
+.info_list {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+
+}
+
+
+
+.info_list tr:hover td {
+    background-color: #292929;
+    color: white;
+}
+
+.info_list td {
+    background-color: #919191;
+    padding: 10px;
+    border-bottom: 1px solid #161616;
+    font-weight: bold;
+    color: black;
+}
+
+.add_cart {
+    background-color: rgb(47, 47, 157);
+}
+
+.add_cart:hover {
+    background-color: rgb(18, 18, 224);
+}
+
+.red_btn {
+    background-color: rgb(168, 32, 32);
+}
+
+.red_btn:hover {
+    background-color: rgb(221, 29, 29);
+}
+
+.feedback_form {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 3px;
+}
+
+
+.line_rate {
+    display: block;
+    width: 70%;
+    height: 10px;
+    background-color: rgb(127, 124, 124);
+    border-radius: 10px;
+}
+
+.add_feedback_btn {
+    border: none;
+    color: white;
+    width: 300px;
+    height: 70px;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+.user_feedback {
+    margin-top: 20px;
+}
+
+.user_feedback textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+.user_rate_list {
+    list-style: none;
+    display: inline;
+    margin-left: 10px;
+}
+
+.user_rate_item {
+    display: inline;
+    cursor: pointer;
+}
+
+/* css contact */
+
+.home {
+    background-color: #292929;
+}
+
+.title_contact {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+.contact_form{
+    padding: 10px 200px;
+    color: white;
+}
+.contact_form input{
+   width: 100%;
+   padding: 10px;
+   outline: none;
+   border-radius: 3px;
+   margin-bottom: 10px;
+}
+.contact_form textarea{
+    width: 100%;
+    padding: 5px;
+    outline: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+ }
+
+ .profile_form{
+    padding: 10px 200px;
+    color: white;
+    margin-bottom: 1px;
+    width: 100%;
+}
+
+.profile_table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+.profile_table tr {
+    border-bottom: 1px solid #ddd;
+    line-height: 2; /* Tăng khoảng cách giữa các dòng */
+}
+
+.profile_table td {
+    padding: 10px;
+}
+
+.profile_table td:first-child {
+    font-weight: bold;
+    width: 30%;
+}
+
+.profile_table td:nth-child(2) {
+    width: 70%;
+}
+
+.profile_form input{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+ }
+ .edit_btn{
+    width: 200px;
+    height: 50px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    float: right;
+    cursor: pointer;
+    border-radius: 3px;
+ }
+ .edit_form{
+    margin-top: 50px;
+ }
+
+

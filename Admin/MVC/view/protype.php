@@ -18,7 +18,7 @@ function total_rows($conn)
 function display_number_page($conn)
 {   
     $total_row = total_rows($conn);
-    $value = 4;
+    $value = 5;
     $page = ceil($total_row / $value);
     for ($i = 1; $i <= $page; $i++) {
         echo '
@@ -31,7 +31,7 @@ function display_number_page($conn)
 function show_protype($conn, $active_page)
 {
     //
-    $value = 4; // số phần tử trên một trang
+    $value = 5; // số phần tử trên một trang
     //  // số trang sẽ bằng tổng dòng trong bảng muốn lấy dữ liệu chia cho số trang, nhưng phải làm tròn lên
 
     $from = ($active_page - 1) * $value; // số phần tử lấy từ đâu

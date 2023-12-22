@@ -10,6 +10,7 @@ ob_start();
     $check = getUser($conn, $email, $pass);
     $position = get_position($conn, $email, $pass);
     $_SESSION['position'] = $position;
+    $_SESSION['email'] = $email;
     if ($check == 1){
       header ("location: ../index.php");
     }

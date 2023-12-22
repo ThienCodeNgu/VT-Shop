@@ -90,9 +90,9 @@ function getOne_product($conn, $id)
         $rs = $statement->fetchAll();
         return $rs;
 }
-function edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $card, $detail, $id_protype)
+function edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $card, $color, $model, $size, $type_screen, $switch, $bus, $guarantee, $producer, $socket, $detail, $id_protype)
 {
-        if ($name == "" && $price == "" && $quantity == "" && $cpu == "" && $ram == "" && $rom == "" && $card == "" && $detail == "" && $id_protype=="") {
+        if ($name == "" && $price == "" && $quantity == "" && $cpu == "" && $ram == "" && $rom == "" && $card == "" && $detail == "" && $color == "" && $model == "" && $size == "" && $type_screen == "" && $switch == "" && $bus == "" && $guarantee == "" && $producer == "" && $socket == "" && $id_protype == "") {
 
         } else {
                 if ($name != "") {
@@ -137,6 +137,60 @@ function edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $c
                         $statement->execute();
                         $statement->closeCursor();
                 }
+                if ($color != "") {
+                        $sql = "update product set color = '$color' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($model != "") {
+                        $sql = "update product set model = '$model' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($size != "") {
+                        $sql = "update product set size = '$size' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($type_screen != "") {
+                        $sql = "update product set type_screen = '$type_screen' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($switch != "") {
+                        $sql = "update product set switch = '$switch' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($bus != "") {
+                        $sql = "update product set bus = '$bus' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($guarantee != "") {
+                        $sql = "update product set guarantee = '$guarantee' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($producer != "") {
+                        $sql = "update product set producer = '$producer' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
+                if ($socket != "") {
+                        $sql = "update product set socket = '$socket' where id = '$id';";
+                        $statement = $conn->prepare($sql);
+                        $statement->execute();
+                        $statement->closeCursor();
+                }
                 if ($detail != "") {
                         $sql = "update product set detail = '$detail' where id = '$id';";
                         $statement = $conn->prepare($sql);
@@ -150,5 +204,12 @@ function edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $c
                         $statement->closeCursor();
                 }
         }
+}
+function changePass($conn, $email, $pass)
+{
+        $sql = "update users set pass = '$pass' where email ='$email'";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $statement->closeCursor();
 }
 ?>

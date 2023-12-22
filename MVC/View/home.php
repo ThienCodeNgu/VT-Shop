@@ -7,7 +7,7 @@
         foreach ($products as $product){
             echo '
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a class="product_item" href="">
+                <a class="product_item" href="index.php?act=product_detail&id='.$product['id'].'">
                     <div class="product_img" style="background-image: url(./admin/'.$product['image1'].');"></div>
                     <hr>
                     <h5 class="name_product">'.$product['name'].'</h5>
@@ -19,6 +19,7 @@
         }
     }
 ?>
+<div id="slider" style="background-image: url(./admin/asset/image/banner4.jpg);"></div>
 <div id="home">
     <div class="container">
         <div class="row">

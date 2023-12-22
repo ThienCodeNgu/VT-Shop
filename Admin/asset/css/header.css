@@ -4,7 +4,10 @@
     background-color: rgba(54, 49, 47, 0.846);
     display: flex;
     align-items: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
 }
 
 .bars {
@@ -148,10 +151,9 @@
 .acc_popup{
     display: none;
     top: 45px;
-    right: 15px;
+    right: 6%;
     position: absolute;
     width: 150px;
-    
     background-color: rgb(158, 153, 153);
     z-index: 2;
     transform-origin: top right;
@@ -245,4 +247,8 @@
 }
 .hidden{
     display: none;
+}
+
+.app_content{
+    margin-top: 84px;
 }

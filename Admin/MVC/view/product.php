@@ -17,10 +17,6 @@ function display_product ($conn, $active_page){
         <td class="text_center">'.$product['price'].' đ</td>
         <td class="text_center">'.$product['quantity'].'</td>
         <td class="text_center"><img style="width:50px; height: 50px;" src="'.$product['image1'].'" alt="hinhanh"></td>
-        <td class="text_center">'.$product['cpu'].'</td>
-        <td class="text_center">'.$product['ram'].'</td>
-        <td class="text_center">'.$product['rom'].'</td>
-        <td class="text_center">'.$product['card'].'</td>
         <td>'.$product['detail'].'</td>
         <td class="text_center">'.$product['ID_protype'].'</td>
         <td class="td_manage_btn">
@@ -76,10 +72,6 @@ function display_number_page($conn)
             <th class="text_center col-1">Giá</th>
             <th class="text_center">Số lượng</th>
             <th class="text_center">Hình ảnh</th>
-            <th class="text_center">CPU</th>
-            <th class="text_center">RAM</th>
-            <th class="text_center">ROM</th>
-            <th class="text_center">CARD</th>
             <th class="text_center">Mô tả</th>
             <th class="text_center">LSP</th>
             <th class="text_center col-20" colspan="2">Chức năng</th>

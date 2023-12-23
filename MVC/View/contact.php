@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contact_form">
                 <form action="index.php?act=contact&id=1" method="post">
-                    <h3 class="title_contact">Gửi ý kiến của bạn đến với chúng tôi</h3>
+                    <h3 style="margin-top: 100px;" class="title_contact">Gửi ý kiến của bạn đến với chúng tôi</h3>
                     <Label>Tên của bạn:</Label> <br>
                     <input type="text" name="name" placeholder="Họ tên" required>
                     <Label>Email:</Label> <br>

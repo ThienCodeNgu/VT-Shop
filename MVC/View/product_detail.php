@@ -107,9 +107,17 @@
                                 </tr>
                             </table>
                         </div>
+                        
                         <div class="detail_func">
-                            <a class="add_cart" href="">Thêm vào giỏ hàng</a>
-                            <a class="red_btn" href="">Mua</a>
+                            <form action="index.php?act=add_cart" method="post" style="margin-top: 10px;">
+                                <Label>Nhập số lượng:</Label>
+                                <input style="width: 20px;" type="text" name="quanti" required>
+                                <input type="hidden" name="name" value="<?= $pro['name'] ?>">
+                                <input type="hidden" name="price" value="<?= $pro['price'] ?>">
+                                <input type="hidden" name="image" value="<?= $pro['image1'] ?>">
+                                <input style="width: 200px; height: 30px; border-radius: 3px; border: none; color: white;" type="submit" name="add_cart" class="add_cart" value="THÊM VÀO GIỎ HÀNG">
+                            </form>
+                            
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@
                     </li>
                     <?php if (isset($email)) { ?>
                         <li class="menu_item">
-                            <a href="">Giỏ hàng</a>
+                            <a href="index.php?act=cart">Giỏ hàng</a>
                         </li>
                         <li class="menu_item">
                             <a href="index.php?act=contact">Liên hệ</a>
@@ -61,11 +61,9 @@
                     <img style="width: 50px; height: 50px;" src="./admin/<?php getLogo($conn) ?>" alt="logo">
                 </div>
                 <div class="search">
-                    <form action="index.php?act=search" class="form">
+                    <form action="index.php?act=search" method="POST" class="form">
                         <input class="input_css" type="text" name="search" placeholder="Nhập tên sản phẩm" required>
-                        <button class="search_btn" type="submit">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <input class="search_btn" type="submit" value="Tìm">  
                     </form>
                 </div>
                 <div class="account">

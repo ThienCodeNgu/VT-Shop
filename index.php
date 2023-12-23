@@ -93,8 +93,51 @@ if (isset($_GET['act'])) {
             $pass = $_POST['pass'];
             $phone = $_POST['phone'];
             $address = $_POST['address'];
-            edit_inf($conn,$email_edit, $name, $pass, $phone, $address, $email);
+            edit_inf($conn, $email_edit, $name, $pass, $phone, $address, $email);
+            $users = getinfoUser($conn, $email);
             include('./mvc/view/profile.php');
+            break;
+        case 'cart':
+            //hiển thị trang cart
+            include('./mvc/view/cart.php');
+            break;
+        case 'add_cart':
+            if (isset($_SESSION['cart'])) {
+
+            } else
+                $_SESSION['cart'] = [];
+            // lấy dữ liệu từ form
+            if (isset($_POST['add_cart']) && $_POST['add_cart']) {
+                $name_product = $_POST['name'];
+                $price = $_POST['price'];
+                $image = $_POST['image'];
+                $quantity = $_POST['quanti'];
+                //kiểm tra sản phẩm có trong giỏ hàng hay không
+                $fl = 0;
+                for ($i = 0; $i < sizeof($_SESSION['cart']); $i++) {
+                    if ($_SESSION['cart'][$i][0] == $name_product) {
+                        $fl = 1;
+                        $quantitynew = $quantity + $_SESSION['cart'][$i][3];
+                        $_SESSION['cart'][$i][3] = $quantitynew;
+                        break;
+                    }
+                }
+                if ($fl == 0) {
+                    //thêm mới sản phẩm
+                    $product = [$name_product, $price, $image, $quantity];
+                    $_SESSION['cart'][] = $product;
+                }
+            }
+            include('./mvc/view/cart.php');
+            break;
+        case 'deleteCart':
+            if (isset($_GET['del']) && $_GET['del'] >= 0) {
+                unset($_SESSION['cart']);
+            }
+            include('./mvc/view/cart.php');
+            break;
+        case 'search':
+            include('./mvc/view/after_search.php');
             break;
         default:
             break;

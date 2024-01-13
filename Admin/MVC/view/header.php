@@ -1,6 +1,8 @@
 <?php 
 include ("mvc/model/getLogo.php");
 include ("mvc/model/connect.php");
+$user = get_infor_acc($conn, $_SESSION['email']);
+$ad_name = $user['fullname'];
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +71,7 @@ include ("mvc/model/connect.php");
                 </div>
             </div>
             <div class="account">
-                <Label class="accName">Võ Thiện</Label>
+                <Label class="accName"><?=$ad_name?></Label>
                 <i class="fa-solid fa-user"></i>
                 <div class="acc_popup">
                     <ul class="acc_function_list">

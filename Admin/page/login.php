@@ -30,6 +30,7 @@ ob_start();
 <body>
     <div class="login-box">
         <h1 class="shop_title">VT-SHOP</h1>
+        <p style="color: white; text-align: center; font-family:Arial, Helvetica, sans-serif;" >WELCOME BACK ADMIN</p>
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
           <div class="user-box">
             <input type="text" name="email" required="">

@@ -18,7 +18,7 @@ function total_rows($conn)
 function display_number_page($conn)
 {   
     $total_row = total_rows($conn);
-    $value = 5;
+    $value = 6;
     $page = ceil($total_row / $value);
     for ($i = 1; $i <= $page; $i++) {
         echo '
@@ -31,7 +31,7 @@ function display_number_page($conn)
 function show_protype($conn, $active_page)
 {
     //
-    $value = 5; // số phần tử trên một trang
+    $value = 6; // số phần tử trên một trang
     //  // số trang sẽ bằng tổng dòng trong bảng muốn lấy dữ liệu chia cho số trang, nhưng phải làm tròn lên
 
     $from = ($active_page - 1) * $value; // số phần tử lấy từ đâu
@@ -43,10 +43,10 @@ function show_protype($conn, $active_page)
     foreach ($rows as $row) {
         echo '
         <tr>
-        <td>' . $i . '</td>
+        <td class="text_center">' . $i . '</td>
         <td>' . $row['NameProductType'] . '</td>
-        <td style="text-align:center;"><img style="width: 50px; height: 50px; border: 1px solid black;" src="./' . $row['ImageProductType'] . '" alt="' . $row['NameProductType'] . '"></td>
-        <td>' . getNameCate($conn, $row['CateID']) . '</td>
+        
+        <td class="text_center">' . getNameCate($conn, $row['CateID']) . '</td>
         </td>
         <td class="td_manage_btn">
             <a class="btn_link edit_btn" href="index.php?act=edit_protype&id=' . $row['IdProductType'] . '">
@@ -57,7 +57,7 @@ function show_protype($conn, $active_page)
         <td class="td_manage_btn">
             <a class="btn_link red_btn" href="index.php?act=delete_protype&id=' . $row['IdProductType'] . '">
                 <i class="fa-solid fa-trash"></i>
-                xóa
+                xóa 
             </a>
         </td>
         </tr>
@@ -69,12 +69,11 @@ function show_protype($conn, $active_page)
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h3 class="func_title">Quản lí loại sản phẩm</h3>
-    <table style="height: 310px;" class="table_manage">
+    <table  class="table_manage">
         <tr>
-            <th>STT</th>
+            <th class="text_center">STT</th>
             <th>Tên loại sản phẩm</th>
-            <th class="text_center">Hình ảnh</th>
-            <th>Danh mục</th>
+            <th class="text_center">Danh mục</th>
             <th class="text_center" colspan="2">Chức năng</th>
         </tr>
         <?php show_protype($conn, $active_page); ?>

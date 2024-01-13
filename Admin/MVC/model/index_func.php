@@ -1,7 +1,8 @@
 <?php
 ob_start();
 // quản lí danh mục 
-function delete_category($conn, $id_cate)
+
+function delete_category($conn, $id_cate) // xóa danh mục
 {
         $query = "delete from category where CateID = '$id_cate'";
         $statement = $conn->prepare($query);
@@ -9,7 +10,7 @@ function delete_category($conn, $id_cate)
         $statement->closeCursor();
 }
 
-function getOne_cate($conn, $id)
+function getOne_cate($conn, $id) // lấy ra một danh mục
 {
         $sql = "select * from category where CateID = '$id'";
         $statement = $conn->prepare($sql);
@@ -18,14 +19,14 @@ function getOne_cate($conn, $id)
         return $rs;
 }
 
-function edit_cate($conn, $id, $newname)
+function edit_cate($conn, $id, $newname) //sửa danh mục
 {
         $sql = "update category set CateName = '$newname' where CateID ='$id'";
         $statement = $conn->prepare($sql);
         $statement->execute();
         $statement->closeCursor();
 }
-function addCategory($conn, $cateName)
+function addCategory($conn, $cateName) //thêm danh mục
 {
         $sql = "insert into category value ('null', '$cateName')";
         $statement = $conn->prepare($sql);
@@ -33,7 +34,7 @@ function addCategory($conn, $cateName)
         $statement->closeCursor();
 }
 //quản lí loại sản phẩm
-function delete_protype($conn, $id)
+function delete_protype($conn, $id) // xóa loại sản phẩm
 {
         $sql = "delete from producttype where IdProductType = '$id'";
         $statement = $conn->prepare($sql);
@@ -41,7 +42,7 @@ function delete_protype($conn, $id)
         $statement->closeCursor();
 }
 
-function getOne_protype($conn, $id)
+function getOne_protype($conn, $id) // láy 1 loại sản phẩm
 {
         $sql = "select * from producttype where IdProductType = '$id'";
         $statement = $conn->prepare($sql);
@@ -50,7 +51,7 @@ function getOne_protype($conn, $id)
         return $rs;
 }
 
-function edit_protype($conn, $id, $nameProType, $oldIdCate, $select)
+function edit_protype($conn, $id, $nameProType, $oldIdCate, $select) //sửa loại sản phẩm
 {
         if ($nameProType == "" && ($oldIdCate == $select)) {
                 // nếu tên loại sản phẩm mới rỗng 
@@ -62,7 +63,7 @@ function edit_protype($conn, $id, $nameProType, $oldIdCate, $select)
                         $statement->execute();
                         $statement->closeCursor();
                 }
-                if ($oldIdCate != $select) {
+                if ($oldIdCate != $select && $select != 0) {
                         $sql = "UPDATE producttype 
                         set 
                         CateID = '$select' 
@@ -74,7 +75,13 @@ function edit_protype($conn, $id, $nameProType, $oldIdCate, $select)
         }
 }
 
-function delete_product($conn, $id)
+function add_protype ($conn, $name, $cateID) {// thêm loại sản phẩm
+        $sql = "insert into producttype value ('null', '$name', '$cateID')";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $statement->closeCursor();
+}
+function delete_product($conn, $id) //xóa sản phẩm
 {
         $sql = "delete from product where id = '$id'";
         $statement = $conn->prepare($sql);
@@ -82,7 +89,7 @@ function delete_product($conn, $id)
         $statement->closeCursor();
 }
 
-function getOne_product($conn, $id)
+function getOne_product($conn, $id) //lấy thông tin một sản phẩm theo id
 {
         $sql = "select * from product where id = '$id'";
         $statement = $conn->prepare($sql);
@@ -91,7 +98,7 @@ function getOne_product($conn, $id)
         return $rs;
 }
 function edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $card, $color, $model, $size, $type_screen, $switch, $bus, $guarantee, $producer, $socket, $detail, $id_protype)
-{
+{ //sửa sản phẩm
         if ($name == "" && $price == "" && $quantity == "" && $cpu == "" && $ram == "" && $rom == "" && $card == "" && $detail == "" && $color == "" && $model == "" && $size == "" && $type_screen == "" && $switch == "" && $bus == "" && $guarantee == "" && $producer == "" && $socket == "" && $id_protype == "") {
 
         } else {
@@ -205,11 +212,21 @@ function edit_product($conn, $id, $name, $price, $quantity, $cpu, $ram, $rom, $c
                 }
         }
 }
-function changePass($conn, $email, $pass)
+function changePass($conn, $email, $pass) // đổi mật khẩu tài khoản
 {
         $sql = "update users set pass = '$pass' where email ='$email'";
         $statement = $conn->prepare($sql);
         $statement->execute();
         $statement->closeCursor();
+}
+
+//lấy thông tin tài khoản
+function get_infor_acc ($conn, $email){
+        $sql = "select * from users where email = '$email'";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $user = $statement->fetch();
+        return $user;
+        $statement->closeCursor(); 
 }
 ?>

@@ -84,6 +84,7 @@
 .notify_list{
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 .notify_item{
     text-align: left;
@@ -175,6 +176,7 @@
     list-style: none;
     width: 100%;
     padding: 0;
+    margin: 0;
 }
 .acc_item{
     text-align: center;

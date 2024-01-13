@@ -42,18 +42,12 @@ function show_one_protype($protypes, $conn)
                     </td>
                 </tr>
                 <tr>
-                    <th>Hình ảnh</th>
-                    <td class="text_center"><img style="width: 50px; height: 50px; border: 1px solid black;" src="./'.$protype['ImageProductType'].'" alt="'.$protype['NameProductType'].'"></td>
-                    <td>
-                        <input type="file" name="file" accept="image/*">
-                    </td>
-                </tr>
-                <tr>
                     <th>Danh mục</th>
                     <input type="hidden" name="oldIDcate" value="'.$protype['CateID'].'" >
                     <td class="text_center">'.getNameCate($conn, $protype['CateID']).'</td>
                     <td>
                         <select name="select_category">
+                        <option value="0">--Chọn danh mục--</option>
                             '.get_listCate($conn).'
                         </select>
                     </td>

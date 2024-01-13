@@ -2,8 +2,8 @@
 session_start();
 ob_start();
 if (isset($_SESSION['position']) && ($_SESSION['position'] == 1)) {
-    include("./mvc/view/header.php");
     include("./mvc/model/index_func.php");
+    include("./mvc/view/header.php");
     if (isset($_GET['act'])) {
         switch ($_GET['act']) {
             case 'logout':
@@ -58,53 +58,21 @@ if (isset($_SESSION['position']) && ($_SESSION['position'] == 1)) {
                 //hiển thị trang quản lí loại sản phẩm
                 include('./mvc/view/protype.php');
                 break;
-            case 'edit_protype':
-                //sửa loại sản phẩm
+            case 'edit_protype': //sửa loại sản phẩm
+                //kiểm tra có id của loại sản phẩm không & id này có phải là 1 số không
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-                    $id = $_GET['id'];
-                    $protypes = getOne_protype($conn, $id);
+                    $id = $_GET['id']; //lấy biến id ra
+                    $protypes = getOne_protype($conn, $id); //hàm lấy thông tin của một loại sản phẩm
                     include('./mvc/view/edit_protype.php');
                 }
+                //kiểm tra xem có nhận được id của loại sản phẩm không
                 if (isset($_POST['id_protype']) && is_numeric($_POST['id_protype'])) {
                     $id = $_POST['id_protype'];
                     $nameProType = $_POST['new_protypeName'];
                     $oldIdCate = $_POST['oldIDcate'];
                     $select = $_POST['select_category'];
-                    edit_protype($conn, $id, $nameProType, $oldIdCate, $select);
-
-                    if (!empty($_FILES['file']['name'])) {
-                        //Xử lí hình ảnh
-                        $targetDirectory = "./asset/image/";
-                        $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
-                        // Kiểm tra xem file có phải là hình ảnh thực sự hay không
-                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-                        $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
-                        if (in_array($imageFileType, $allowedExtensions)) {
-                            // Di chuyển file từ thư mục tạm lưu vào thư mục đích
-                            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-                                // sau khi chuyển ảnh mới vào asset-images 
-                                // tách chuỗi ra để có link chính xác lưu vào database
-                                $arr = explode('./', $targetFile);
-                                $NewLink = $arr[1];
-                                // tiếp theo ta truy vấn database và đổi link ảnh
-                                //đầu tiên truy vấn csdl để lấy link ảnh cũ
-                                $query = "select * from producttype where IdProductType = '$id'";
-                                $result = $conn->prepare($query);
-                                $result->execute();
-                                $rows = $result->fetch();
-                                // Xóa ảnh cũ trong folder image
-                                unlink('./' . $rows['ImageProductType']);
-                                //đổi link ảnh
-                                $sql = "UPDATE producttype 
-                                    set 
-                                    ImageProductType = '$NewLink' 
-                                    WHERE IdProductType = '$id'";
-                                $statement = $conn->prepare($sql);
-                                $statement->execute();
-                                $statement->closeCursor();
-                            }
-                        }
-                    }
+                    //nhận các giá trị mới của loại sản phẩm
+                    edit_protype($conn, $id, $nameProType, $oldIdCate, $select); //hàm sửa loại sản phẩm
                     if (isset($_GET['active_page'])) {
                         $active_page = $_GET['active_page'];
                     } else {
@@ -136,35 +104,17 @@ if (isset($_SESSION['position']) && ($_SESSION['position'] == 1)) {
                 if (isset($_POST['name_protype'])) {
                     $name = $_POST['name_protype'];
                     $cateID = $_POST['select_category'];
-                    if (!empty($_FILES['file']['name'])) {
-                        //Xử lí hình ảnh
-                        $targetDirectory = "./asset/image/";
-                        $targetFile = $targetDirectory . DIRECTORY_SEPARATOR . basename($_FILES["file"]["name"]);
-                        // Kiểm tra xem file có phải là hình ảnh thực sự hay không
-                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-                        $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
-                        if (in_array($imageFileType, $allowedExtensions)) {
-                            // Di chuyển file từ thư mục tạm lưu vào thư mục đích
-                            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-                                // sau khi chuyển ảnh mới vào asset-images 
-                                // tách chuỗi ra để có link chính xác lưu vào database
-                                $arr = explode('./', $targetFile);
-                                $NewLink = $arr[1];
-                                // tiếp theo ta truy vấn database và đổi link ảnh
-                                //đổi link ảnh
-                                $sql = "insert into producttype  
-                                    value ('null', '$name', '$NewLink', '$cateID');";
-                                $statement = $conn->prepare($sql);
-                                $statement->execute();
-                                $statement->closeCursor();
-                                if (isset($_GET['active_page'])) {
-                                    $active_page = $_GET['active_page'];
-                                } else {
-                                    $active_page = 1;
-                                }
-                                include("./mvc/view/protype.php");
-                            }
+                    if ($cateID == 0) {
+                        echo '<script> alert ("Vui lòng chọn danh mục!"); </script>';
+                        include('./mvc/view/add_protype.php');
+                    } else {
+                        add_protype($conn, $name, $cateID);
+                        if (isset($_GET['active_page'])) {
+                            $active_page = $_GET['active_page'];
+                        } else {
+                            $active_page = 1;
                         }
+                        include('./mvc/view/protype.php');
                     }
                 }
                 break;
@@ -203,7 +153,6 @@ if (isset($_SESSION['position']) && ($_SESSION['position'] == 1)) {
                                     $statement = $conn->prepare($sql);
                                     $statement->execute();
                                     $statement->closeCursor();
-
                                 }
                             }
                         }
@@ -364,14 +313,14 @@ if (isset($_SESSION['position']) && ($_SESSION['position'] == 1)) {
                 break;
             case 'profile':
                 //đổi mật mhẩu
-                if (isset($_GET['id']) && $_GET['id']=="admin"){
+                if (isset($_GET['id']) && $_GET['id'] == "admin") {
                     $email = $_SESSION['email'];
                     $pass = $_POST['pass'];
                     changePass($conn, $email, $pass);
-                }else {
+                } else {
                     include('./mvc/view/profile.php');
                 }
-                
+
                 break;
             default:
                 break;
